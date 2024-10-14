@@ -9,18 +9,23 @@
     <title>Document</title>
 </head>
 <body>
-<h1>flashgame prototype</h1>
+<x-layout>
 
+</x-layout>
+<h1>flashgame prototype</h1>
+<p>press s to save</p>
 <div id="p5-container"></div>
 
 <script>
     let characterImage; //variable to put character image in
     let shirts = []; //array for shirts
+    let shoes = []; //array for shoes
     let selectedShirt = null; //variable to track which shirt is being worn
-    let characterX = 250; //variable for position charactor horizontal
+    let selectedShoe = null; //variable to track which shirt is being worn
+    let characterX = 300; //variable for position charactor horizontal
     let characterY = 150; //variable for pos char vertical
-    let shirtWidth = 50; //variable for shirt width
-    let shirtHeight = 50; //variable for shirt height
+    let clothingWidth = 50; //variable for shirt width
+    let clothingHeight = 50; //variable for shirt height
 
     function preload() {
         //load image from public
@@ -30,6 +35,11 @@
         shirts.push({ img: loadImage('../images/shirtblue.png'), x: 50, y: 100, worn: false });
         shirts.push({ img: loadImage('../images/shirtgreen.png'), x: 50, y: 200, worn: false });
         shirts.push({ img: loadImage('../images/shirtred.png'), x: 50, y: 300, worn: false });
+
+        //load shirt images, and assigning x and y position,
+        shoes.push({ img: loadImage('../images/shoeblue.png'), x: 150, y: 100, worn: false });
+        shoes.push({ img: loadImage('../images/shoegreen.png'), x: 150, y: 200, worn: false });
+        shoes.push({ img: loadImage('../images/shoered.png'), x: 150, y: 300, worn: false });
     }
 //setup fuction to initialize canvas
     function setup() {
@@ -47,9 +57,17 @@
         //call function to "draw"(display) shirts
         drawShirts();
 
+        //call function to "draw"(display) shirts
+        drawShoes();
+
         //if a shirt is selected, call function to draw shirt
         if (selectedShirt) {
             drawShirtOnCharacter(selectedShirt.img);
+        }
+
+        //if a shirt is selected, call function to draw shirt
+        if (selectedShoe) {
+            drawShirtOnCharacter(selectedShoe.img);
         }
     }
 
@@ -61,7 +79,14 @@
     //function to draw shirts using the assigned x and y position
     function drawShirts() {
         for (let shirt of shirts) {
-            image(shirt.img, shirt.x, shirt.y, shirtWidth, shirtHeight);
+            image(shirt.img, shirt.x, shirt.y, clothingWidth, clothingHeight);
+        }
+    }
+
+    //function to draw shirts using the assigned x and y position
+    function drawShoes() {
+        for (let shoe of shoes) {
+            image(shoe.img, shoe.x, shoe.y, clothingWidth, clothingHeight);
         }
     }
 
@@ -71,11 +96,17 @@
         image(shirt, characterX, characterY, 100, 100); // Shirt over the character
     }
 
+    //fuction to draw selected shirt on the character
+    function drawShoeOnCharacter(shoe) {
+        // Adjust position and size of the shirt on the character as needed
+        image(shoe, characterX, characterY, 100, 100); // Shirt over the character
+    }
+
     //handle mouse click event to select or deselect a shirt
     function mousePressed() {
         for (let shirt of shirts) {
-            if (mouseX > shirt.x && mouseX < shirt.x + shirtWidth &&
-                mouseY > shirt.y && mouseY < shirt.y + shirtHeight) {
+            if (mouseX > shirt.x && mouseX < shirt.x + clothingWidth &&
+                mouseY > shirt.y && mouseY < shirt.y + clothingHeight) {
 
                 //if clicked on a shirt that's already selected, deselect it (remove it)
                 if (selectedShirt === shirt) {
@@ -83,6 +114,20 @@
                 } else {
                     //else select this shirt to wear it
                     selectedShirt = shirt;
+                }
+            }
+        }
+
+        for (let shoe of shoes) {
+            if (mouseX > shoe.x && mouseX < shoe.x + clothingWidth &&
+                mouseY > shoe.y && mouseY < shoe.y + clothingHeight) {
+
+                //if clicked on a shirt that's already selected, deselect it (remove it)
+                if (selectedShoe === shoe) {
+                    selectedShoe = null;
+                } else {
+                    //else select this shirt to wear it
+                    selectedShoe = shoe;
                 }
             }
         }

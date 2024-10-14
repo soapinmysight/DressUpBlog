@@ -11,6 +11,8 @@
 <a href="../home.blade.php">Home</a>
 <a href="../about-us.blade.php">About</a>
 <a href="../contact.blade.php">Home</a>
+<a href="../canvas.blade.php">flasgame</a>
+
 
 
 </body>
