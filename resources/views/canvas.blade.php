@@ -18,14 +18,19 @@
 
 <script>
     let characterImage; //variable to put character image in
-    let shirts = []; //array for shirts
-    let shoes = []; //array for shoes
-    let selectedShirt = null; //variable to track which shirt is being worn
-    let selectedShoe = null; //variable to track which shirt is being worn
-    let characterX = 300; //variable for position charactor horizontal
+    let characterX = 300; //variable for position character horizontal
     let characterY = 150; //variable for pos char vertical
-    let clothingWidth = 50; //variable for shirt width
-    let clothingHeight = 50; //variable for shirt height
+
+    let clothingWidth = 50; //variable for clothing width
+    let clothingHeight = 50; //variable for clothing height
+
+    let shirts = []; //array for shirts
+    let selectedShirt = null; //variable to track which shirt is being worn
+
+    let shoes = []; //array for shoes
+    let selectedShoe = null; //variable to track which shoe is being worn
+
+
 
     function preload() {
         //load image from public
@@ -36,12 +41,12 @@
         shirts.push({ img: loadImage('../images/shirtgreen.png'), x: 50, y: 200, worn: false });
         shirts.push({ img: loadImage('../images/shirtred.png'), x: 50, y: 300, worn: false });
 
-        //load shirt images, and assigning x and y position,
+        //load shoe images, and assigning x and y position,
         shoes.push({ img: loadImage('../images/shoeblue.png'), x: 150, y: 100, worn: false });
         shoes.push({ img: loadImage('../images/shoegreen.png'), x: 150, y: 200, worn: false });
         shoes.push({ img: loadImage('../images/shoered.png'), x: 150, y: 300, worn: false });
     }
-//setup fuction to initialize canvas
+//setup function to initialize canvas
     function setup() {
         let canvas = createCanvas(600, 400);
         canvas.parent('p5-container');
@@ -57,7 +62,7 @@
         //call function to "draw"(display) shirts
         drawShirts();
 
-        //call function to "draw"(display) shirts
+        //call function to "draw"(display) shoes
         drawShoes();
 
         //if a shirt is selected, call function to draw shirt
@@ -65,7 +70,7 @@
             drawShirtOnCharacter(selectedShirt.img);
         }
 
-        //if a shirt is selected, call function to draw shirt
+        //if a shoe is selected, call function to draw shoe
         if (selectedShoe) {
             drawShirtOnCharacter(selectedShoe.img);
         }
@@ -73,38 +78,39 @@
 
     //function to draw the character
     function drawCharacter() {
-        image(characterImage, characterX, characterY, 100, 100); // Position and size of the character
+        image(characterImage, characterX, characterY, 100, 100); //character position x, position y, size x and size y
     }
 
-    //function to draw shirts using the assigned x and y position
+    //function to draw shirts using the earlier assigned x and y position
     function drawShirts() {
         for (let shirt of shirts) {
-            image(shirt.img, shirt.x, shirt.y, clothingWidth, clothingHeight);
+            image(shirt.img, shirt.x, shirt.y, clothingWidth, clothingHeight); //shirts position x, position y, size x and size y
         }
     }
 
-    //function to draw shirts using the assigned x and y position
+    //function to draw shirts using the earlier assigned x and y position
     function drawShoes() {
         for (let shoe of shoes) {
-            image(shoe.img, shoe.x, shoe.y, clothingWidth, clothingHeight);
+            image(shoe.img, shoe.x, shoe.y, clothingWidth, clothingHeight); //shoe position x, position y, size x and size y
         }
     }
 
     //fuction to draw selected shirt on the character
     function drawShirtOnCharacter(shirt) {
-        // Adjust position and size of the shirt on the character as needed
-        image(shirt, characterX, characterY, 100, 100); // Shirt over the character
+        //make the position and size of shirt image the same as character image so the clothing fits properly
+        image(shirt, characterX, characterY, 100, 100);
     }
 
     //fuction to draw selected shirt on the character
     function drawShoeOnCharacter(shoe) {
-        // Adjust position and size of the shirt on the character as needed
-        image(shoe, characterX, characterY, 100, 100); // Shirt over the character
+        //make the position and size of shoe image the same as character image so the clothing fits properly
+        image(shoe, characterX, characterY, 100, 100);
     }
 
     //handle mouse click event to select or deselect a shirt
     function mousePressed() {
         for (let shirt of shirts) {
+            //find shirt that is in the same position as the spot that was clicked
             if (mouseX > shirt.x && mouseX < shirt.x + clothingWidth &&
                 mouseY > shirt.y && mouseY < shirt.y + clothingHeight) {
 
@@ -119,6 +125,7 @@
         }
 
         for (let shoe of shoes) {
+            //find shoe that is in the same position as the spot that was clicked
             if (mouseX > shoe.x && mouseX < shoe.x + clothingWidth &&
                 mouseY > shoe.y && mouseY < shoe.y + clothingHeight) {
 
