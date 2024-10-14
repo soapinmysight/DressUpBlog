@@ -6,6 +6,7 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.8.0/p5.js"></script>
+
     <title>Document</title>
 </head>
 <body>
@@ -34,17 +35,17 @@
 
     function preload() {
         //load image from public
-        characterImage = loadImage('../images/personplaceholder.png');
+        characterImage = loadImage('../images/person_placeholder.png');
 
         //load shirt images, and assigning x and y position,
-        shirts.push({ img: loadImage('../images/shirtblue.png'), x: 50, y: 100, worn: false });
-        shirts.push({ img: loadImage('../images/shirtgreen.png'), x: 50, y: 200, worn: false });
-        shirts.push({ img: loadImage('../images/shirtred.png'), x: 50, y: 300, worn: false });
+        shirts.push({ img: loadImage('../images/shirt_blue.png'), x: 50, y: 100, worn: false });
+        shirts.push({ img: loadImage('../images/shirt_green.png'), x: 50, y: 200, worn: false });
+        shirts.push({ img: loadImage('../images/shirt_red.png'), x: 50, y: 300, worn: false });
 
         //load shoe images, and assigning x and y position,
-        shoes.push({ img: loadImage('../images/shoeblue.png'), x: 150, y: 100, worn: false });
-        shoes.push({ img: loadImage('../images/shoegreen.png'), x: 150, y: 200, worn: false });
-        shoes.push({ img: loadImage('../images/shoered.png'), x: 150, y: 300, worn: false });
+        shoes.push({ img: loadImage('../images/shoe_blue.png'), x: 150, y: 100, worn: false });
+        shoes.push({ img: loadImage('../images/shoe_green.png'), x: 150, y: 200, worn: false });
+        shoes.push({ img: loadImage('../images/shoe_red.png'), x: 150, y: 300, worn: false });
     }
 //setup function to initialize canvas
     function setup() {
@@ -95,13 +96,13 @@
         }
     }
 
-    //fuction to draw selected shirt on the character
+    //function to draw selected shirt on the character
     function drawShirtOnCharacter(shirt) {
         //make the position and size of shirt image the same as character image so the clothing fits properly
         image(shirt, characterX, characterY, 100, 100);
     }
 
-    //fuction to draw selected shirt on the character
+    //function to draw selected shirt on the character
     function drawShoeOnCharacter(shoe) {
         //make the position and size of shoe image the same as character image so the clothing fits properly
         image(shoe, characterX, characterY, 100, 100);
@@ -149,4 +150,4 @@
 
 </script></body>
 </html>
-</html>
+

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CanvasController;
 use App\Http\Controllers\HomePageController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -29,9 +30,7 @@ Route::get('/home/{name}', [HomePageController::class, 'index']);
 
 Route::get('/contact', [ContactController::class, 'index']);
 
-Route::get('/canvas', function () {
-    return view('canvas');
-});
+Route::get('/canvas', [CanvasController::class, 'index']);
 
 
 require __DIR__.'/auth.php';
