@@ -8,12 +8,11 @@
     <title>Document</title>
 </head>
 <body>
-<a href="../home.blade.php">Home</a>
-<a href="../about-us.blade.php">About</a>
-<a href="../contact.blade.php">Home</a>
-<a href="../canvas.blade.php">flasgame</a>
+<x-navlink-cast5 href="../home/name" :active="request()->is('home/name')">Home</x-navlink-cast5>
+<x-navlink-cast5 href="../about-us" :active="request()->is('about-us')">About</x-navlink-cast5>
+<x-navlink-cast5 href="../contact" :active="request()->is('contact')">Contact</x-navlink-cast5>
+<x-navlink-cast5 href="../canvas" :active="request()->is('canvas')">flashgame</x-navlink-cast5>
 
-
-
+{{ $slot }}
 </body>
 </html>
