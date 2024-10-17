@@ -31,6 +31,17 @@
                     <x-nav-link :href="route('canvas')" :active="request()->routeIs('canvas')">
                         {{ __('Flashgame') }}
                     </x-nav-link>
+
+{{--                    <x-nav-link :href="route('blogs')" :active="request()->routeIs('blogs')">--}}
+{{--                        {{ __('Blog') }}--}}
+{{--                    </x-nav-link>--}}
+
+                    <x-nav-link :href="route('theme.create')" :active="request()->routeIs('theme.create')">
+                        {{ __('Create Theme') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('blog.index')" :active="request()->routeIs('blog.index')">
+                        {{ __('Blog') }}
+                    </x-nav-link>
                 </div>
             </div>
 
