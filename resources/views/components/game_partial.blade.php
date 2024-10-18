@@ -4,8 +4,10 @@
 
 <script>
     let characterImage; //variable to put character image in
-    let characterX = 300; //variable for position character horizontal
-    let characterY = 150; //variable for pos char vertical
+    let charPosX = 500; //variable for position character horizontal
+    let charPosY = 150; //variable for pos char vertical
+    let charSizeX = 200; //variable for position character horizontal
+    let charSizeY = 200; //variable for pos char vertical
 
     let clothingWidth = 50; //variable for clothing width
     let clothingHeight = 50; //variable for clothing height
@@ -16,7 +18,12 @@
     let shoes = []; //array for shoes
     let selectedShoe = null; //variable to track which shoe is being worn
 
+    let items = []; //array for items
+    let selectedItem = null; //variable to track which item is being worn
 
+
+    let hats = []; //array for shoes
+    let selectedHat = null; //variable to track which shoe is being worn
 
     function preload() {
         //load image from public
@@ -31,10 +38,20 @@
         shoes.push({ img: loadImage('../images/shoe_blue.png'), x: 150, y: 100, worn: false });
         shoes.push({ img: loadImage('../images/shoe_green.png'), x: 150, y: 200, worn: false });
         shoes.push({ img: loadImage('../images/shoe_red.png'), x: 150, y: 300, worn: false });
+
+        //load item images, and assigning x and y position,
+        items.push({ img: loadImage('../images/item_blue.png'), x: 250, y: 100, worn: false });
+        items.push({ img: loadImage('../images/item_green.png'), x: 250, y: 200, worn: false });
+        items.push({ img: loadImage('../images/item_red.png'), x: 250, y: 300, worn: false });
+
+        //load item images, and assigning x and y position,
+        hats.push({ img: loadImage('../images/hat_blue.png'), x: 350, y: 100, worn: false });
+        hats.push({ img: loadImage('../images/hat_green.png'), x: 350, y: 200, worn: false });
+        hats.push({ img: loadImage('../images/hat_red.png'), x: 350, y: 300, worn: false });
     }
     //setup function to initialize canvas
     function setup() {
-        let canvas = createCanvas(600, 400);
+        let canvas = createCanvas(1000, 600);
         canvas.parent('p5-container');
     }
 
@@ -51,6 +68,12 @@
         //call function to "draw"(display) shoes
         drawShoes();
 
+        //call function to "draw"(display) items
+        drawItem();
+
+        //call function to "draw"(display) items
+        drawHat();
+
         //if a shirt is selected, call function to draw shirt
         if (selectedShirt) {
             drawShirtOnCharacter(selectedShirt.img);
@@ -58,13 +81,23 @@
 
         //if a shoe is selected, call function to draw shoe
         if (selectedShoe) {
-            drawShirtOnCharacter(selectedShoe.img);
+            drawShoeOnCharacter(selectedShoe.img);
+        }
+
+        //if an item is selected, call function to draw shoe
+        if (selectedItem) {
+            drawItemOnCharacter(selectedItem.img);
+        }
+
+        //if a hat is selected, call function to draw shoe
+        if (selectedHat) {
+            drawHatOnCharacter(selectedHat.img);
         }
     }
 
     //function to draw the character
     function drawCharacter() {
-        image(characterImage, characterX, characterY, 100, 100); //character position x, position y, size x and size y
+        image(characterImage, charPosX, charPosY, charSizeX, charSizeY); //character position x, position y, size x and size y
     }
 
     //function to draw shirts using the earlier assigned x and y position
@@ -74,23 +107,49 @@
         }
     }
 
-    //function to draw shirts using the earlier assigned x and y position
+    //function to draw shoes using the earlier assigned x and y position
     function drawShoes() {
         for (let shoe of shoes) {
             image(shoe.img, shoe.x, shoe.y, clothingWidth, clothingHeight); //shoe position x, position y, size x and size y
         }
     }
 
+    //function to draw item using the earlier assigned x and y position
+    function drawItem() {
+        for (let item of items) {
+            image(item.img, item.x, item.y, clothingWidth, clothingHeight); //item position x, position y, size x and size y
+        }
+    }
+
+    //function to draw item using the earlier assigned x and y position
+    function drawHat() {
+        for (let hat of hats) {
+            image(hat.img, hat.x, hat.y, clothingWidth, clothingHeight); //item position x, position y, size x and size y
+        }
+    }
+
     //function to draw selected shirt on the character
     function drawShirtOnCharacter(shirt) {
         //make the position and size of shirt image the same as character image so the clothing fits properly
-        image(shirt, characterX, characterY, 100, 100);
+        image(shirt, charPosX, charPosY, charSizeX, charSizeY);
     }
 
     //function to draw selected shirt on the character
     function drawShoeOnCharacter(shoe) {
         //make the position and size of shoe image the same as character image so the clothing fits properly
-        image(shoe, characterX, characterY, 100, 100);
+        image(shoe, charPosX, charPosY, charSizeX, charSizeY);
+    }
+
+    //function to draw selected shirt on the character
+    function drawItemOnCharacter(item) {
+        //make the position and size of shoe image the same as character image so the clothing fits properly
+        image(item, charPosX, charPosY, charSizeX, charSizeY);
+    }
+
+    //function to draw selected shirt on the character
+    function drawHatOnCharacter(hat) {
+        //make the position and size of shoe image the same as character image so the clothing fits properly
+        image(hat, charPosX, charPosY, charSizeX, charSizeY);
     }
 
     //handle mouse click event to select or deselect a shirt
@@ -121,6 +180,36 @@
                 } else {
                     //else select this shirt to wear it
                     selectedShoe = shoe;
+                }
+            }
+        }
+
+        for (let item of items) {
+            //find shoe that is in the same position as the spot that was clicked
+            if (mouseX > item.x && mouseX < item.x + clothingWidth &&
+                mouseY > item.y && mouseY < item.y + clothingHeight) {
+
+                //if clicked on a shirt that's already selected, deselect it (remove it)
+                if (selectedItem === item) {
+                    selectedItem = null;
+                } else {
+                    //else select this shirt to wear it
+                    selectedItem = item;
+                }
+            }
+        }
+
+        for (let hat of hats) {
+            //find hat that is in the same position as the spot that was clicked
+            if (mouseX > hat.x && mouseX < hat.x + clothingWidth &&
+                mouseY > hat.y && mouseY < hat.y + clothingHeight) {
+
+                //if clicked on a hat that's already selected, deselect it (remove it)
+                if (selectedHat === hat) {
+                    selectedHat = null;
+                } else {
+                    //else select this hat to wear it
+                    selectedHat = hat;
                 }
             }
         }
