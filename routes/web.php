@@ -64,8 +64,11 @@ Route::get('/canvas', [CanvasController::class, 'index'])->middleware(['auth', '
 Route::resource('/theme', ThemeController::class);
 Route::resource('/comment', CommentController::class);
 
+Route::resource('/blog', BlogController::class);
 
 Route::get('/blog', [BlogController::class, 'index'])->name('blog.index'); // Route to list all blogs
 Route::get('/blog/{blog}', [BlogController::class, 'show'])->name('blog.show'); // Route to show a single blog
+Route::get('/blog-create', [BlogController::class, 'create'])->name('blog.create'); // Route to create a blogs
+
 
 require __DIR__.'/auth.php';

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 use App\Models\Blog;
+use App\Models\Comment;
+use App\Models\Theme;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -22,7 +24,7 @@ class BlogController extends Controller
      */
     public function create()
     {
-        //
+        return view('blog.create');
     }
 
     /**
@@ -30,7 +32,11 @@ class BlogController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate(['title' => 'required']);
+        $blog = new Blog();
+        $blog->title = $request->input('title');
+        $blog->description = $request->input('description');
+        $blog->save();
     }
 
     /**
