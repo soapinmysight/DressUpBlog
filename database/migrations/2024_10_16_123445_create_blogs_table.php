@@ -15,10 +15,10 @@ return new class extends Migration
             $table->id();
             $table->string('title', 100);
             $table->text('description');
+            $table->string('image', 25000000)->nullable();  // Set as nullable if optional
+            $table->boolean('active')->default(true);  // Added default true for active
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');  // Define foreign key relationship
             $table->timestamps();
-//            $table->string('image', 25000000);
-//            $table->boolean('active');
-//            $table->string('user_id',25000000);
         });
     }
 

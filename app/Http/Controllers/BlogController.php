@@ -32,11 +32,20 @@ class BlogController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate(['title' => 'required']);
+        $request->validate([
+            'title' => 'required|max:100',
+            'description' => 'required',
+            ]);
         $blog = new Blog();
         $blog->title = $request->input('title');
         $blog->description = $request->input('description');
+        $blog->user_id = auth()->id();  // Associate the blog with the logged-in user
+        $blog->active = true;
+        if ($request->hasFile('image')) {
+            $blog->image = $request->file('image')->store('images', 'public');
+        }
         $blog->save();
+        return redirect()->route('blog.index')->with('success', 'Blog created successfully.');
     }
 
     /**
