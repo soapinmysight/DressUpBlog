@@ -27,27 +27,37 @@
 
     function preload() {
         //load image from public
-        characterImage = loadImage('../images/person_placeholder.png');
+        characterImage = loadImage('../images/game/cat.png');
 
         //load shirt images, and assigning x and y position,
-        shirts.push({ img: loadImage('../images/shirt_blue.png'), x: 50, y: 100, worn: false });
-        shirts.push({ img: loadImage('../images/shirt_green.png'), x: 50, y: 200, worn: false });
-        shirts.push({ img: loadImage('../images/shirt_red.png'), x: 50, y: 300, worn: false });
+        shirts.push({ img: loadImage('../images/game/clothes/shirt1.png'), x: 50, y: 100, worn: false });
+        shirts.push({ img: loadImage('../images/game/clothes/shirt2.png'), x: 50, y: 150, worn: false });
+        shirts.push({ img: loadImage('../images/game/clothes/shirt3.png'), x: 50, y: 200, worn: false });
+        shirts.push({ img: loadImage('../images/game/clothes/shirt4.png'), x: 50, y: 250, worn: false });
+        shirts.push({ img: loadImage('../images/game/clothes/shirt5.png'), x: 50, y: 300, worn: false });
+        shirts.push({ img: loadImage('../images/game/clothes/shirt6.png'), x: 50, y: 350, worn: false });
+
 
         //load shoe images, and assigning x and y position,
-        shoes.push({ img: loadImage('../images/shoe_blue.png'), x: 150, y: 100, worn: false });
-        shoes.push({ img: loadImage('../images/shoe_green.png'), x: 150, y: 200, worn: false });
-        shoes.push({ img: loadImage('../images/shoe_red.png'), x: 150, y: 300, worn: false });
+        shoes.push({ img: loadImage('../images/game/clothes/shoe1.png'), x: 125, y: 100, worn: false });
+        shoes.push({ img: loadImage('../images/game/clothes/shoe2.png'), x: 125, y: 150, worn: false });
+        shoes.push({ img: loadImage('../images/game/clothes/shoe3.png'), x: 125, y: 200, worn: false });
+        shoes.push({ img: loadImage('../images/game/clothes/shoe4.png'), x: 125, y: 250, worn: false });
+        shoes.push({ img: loadImage('../images/game/clothes/shoe5.png'), x: 125, y: 300, worn: false });
 
         //load item images, and assigning x and y position,
-        items.push({ img: loadImage('../images/item_blue.png'), x: 250, y: 100, worn: false });
-        items.push({ img: loadImage('../images/item_green.png'), x: 250, y: 200, worn: false });
-        items.push({ img: loadImage('../images/item_red.png'), x: 250, y: 300, worn: false });
+        items.push({ img: loadImage('../images/game/clothes/item1.png'), x: 200, y: 100, worn: false });
+        items.push({ img: loadImage('../images/game/clothes/item2.png'), x: 200, y: 150, worn: false });
+        items.push({ img: loadImage('../images/game/clothes/item3.png'), x: 200, y: 200, worn: false });
+        items.push({ img: loadImage('../images/game/clothes/item4.png'), x: 200, y: 250, worn: false });
+        items.push({ img: loadImage('../images/game/clothes/item5.png'), x: 200, y: 300, worn: false });
 
         //load item images, and assigning x and y position,
-        hats.push({ img: loadImage('../images/hat_blue.png'), x: 350, y: 100, worn: false });
-        hats.push({ img: loadImage('../images/hat_green.png'), x: 350, y: 200, worn: false });
-        hats.push({ img: loadImage('../images/hat_red.png'), x: 350, y: 300, worn: false });
+        hats.push({ img: loadImage('../images/game/clothes/hat1.png'), x: 275, y: 100, worn: false });
+        hats.push({ img: loadImage('../images/game/clothes/hat2.png'), x: 275, y: 150, worn: false });
+        hats.push({ img: loadImage('../images/game/clothes/hat3.png'), x: 275, y: 200, worn: false });
+        hats.push({ img: loadImage('../images/game/clothes/hat4.png'), x: 275, y: 250, worn: false });
+        hats.push({ img: loadImage('../images/game/clothes/hat5.png'), x: 275, y: 300, worn: false });
     }
     //setup function to initialize canvas
     function setup() {
