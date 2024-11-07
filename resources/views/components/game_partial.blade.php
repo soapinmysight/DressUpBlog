@@ -6,11 +6,11 @@
     let characterImage; //variable to put character image in
     let charPosX = 500; //variable for position character horizontal
     let charPosY = 150; //variable for pos char vertical
-    let charSizeX = 200; //variable for position character horizontal
-    let charSizeY = 200; //variable for pos char vertical
+    let charSizeX = 400; //variable for position character horizontal
+    let charSizeY = 400; //variable for pos char vertical
 
-    let clothingWidth = 50; //variable for clothing width
-    let clothingHeight = 50; //variable for clothing height
+    let clothingWidth = 100; //variable for clothing width
+    let clothingHeight = 100; //variable for clothing height
 
     let shirts = []; //array for shirts
     let selectedShirt = null; //variable to track which shirt is being worn
@@ -30,38 +30,38 @@
         characterImage = loadImage('../images/game/cat.png');
 
         //load shirt images, and assigning x and y position,
-        shirts.push({ img: loadImage('../images/game/clothes/shirt1.png'), x: 50, y: 100, worn: false });
-        shirts.push({ img: loadImage('../images/game/clothes/shirt2.png'), x: 50, y: 150, worn: false });
-        shirts.push({ img: loadImage('../images/game/clothes/shirt3.png'), x: 50, y: 200, worn: false });
-        shirts.push({ img: loadImage('../images/game/clothes/shirt4.png'), x: 50, y: 250, worn: false });
-        shirts.push({ img: loadImage('../images/game/clothes/shirt5.png'), x: 50, y: 300, worn: false });
-        shirts.push({ img: loadImage('../images/game/clothes/shirt6.png'), x: 50, y: 350, worn: false });
+        shirts.push({ img: loadImage('../images/game/clothes/shirt1.png'), x: 5, y: 5, worn: false });
+        shirts.push({ img: loadImage('../images/game/clothes/shirt2.png'), x: 5, y: 105, worn: false });
+        shirts.push({ img: loadImage('../images/game/clothes/shirt3.png'), x: 5, y: 205, worn: false });
+        shirts.push({ img: loadImage('../images/game/clothes/shirt4.png'), x: 5, y: 305, worn: false });
+        shirts.push({ img: loadImage('../images/game/clothes/shirt5.png'), x: 5, y: 405, worn: false });
+        shirts.push({ img: loadImage('../images/game/clothes/shirt6.png'), x: 5, y: 505, worn: false });
 
 
         //load shoe images, and assigning x and y position,
-        shoes.push({ img: loadImage('../images/game/clothes/shoe1.png'), x: 125, y: 100, worn: false });
-        shoes.push({ img: loadImage('../images/game/clothes/shoe2.png'), x: 125, y: 150, worn: false });
-        shoes.push({ img: loadImage('../images/game/clothes/shoe3.png'), x: 125, y: 200, worn: false });
-        shoes.push({ img: loadImage('../images/game/clothes/shoe4.png'), x: 125, y: 250, worn: false });
-        shoes.push({ img: loadImage('../images/game/clothes/shoe5.png'), x: 125, y: 300, worn: false });
+        shoes.push({ img: loadImage('../images/game/clothes/shoe1.png'), x: 125, y: 5, worn: false });
+        shoes.push({ img: loadImage('../images/game/clothes/shoe2.png'), x: 125, y: 105, worn: false });
+        shoes.push({ img: loadImage('../images/game/clothes/shoe3.png'), x: 125, y: 205, worn: false });
+        shoes.push({ img: loadImage('../images/game/clothes/shoe4.png'), x: 125, y: 305, worn: false });
+        shoes.push({ img: loadImage('../images/game/clothes/shoe5.png'), x: 125, y: 405, worn: false });
 
         //load item images, and assigning x and y position,
-        items.push({ img: loadImage('../images/game/clothes/item1.png'), x: 200, y: 100, worn: false });
-        items.push({ img: loadImage('../images/game/clothes/item2.png'), x: 200, y: 150, worn: false });
-        items.push({ img: loadImage('../images/game/clothes/item3.png'), x: 200, y: 200, worn: false });
-        items.push({ img: loadImage('../images/game/clothes/item4.png'), x: 200, y: 250, worn: false });
-        items.push({ img: loadImage('../images/game/clothes/item5.png'), x: 200, y: 300, worn: false });
+        items.push({ img: loadImage('../images/game/clothes/item1.png'), x: 245, y: 5, worn: false });
+        items.push({ img: loadImage('../images/game/clothes/item2.png'), x: 245, y: 105, worn: false });
+        items.push({ img: loadImage('../images/game/clothes/item3.png'), x: 245, y: 205, worn: false });
+        items.push({ img: loadImage('../images/game/clothes/item4.png'), x: 245, y: 305, worn: false });
+        items.push({ img: loadImage('../images/game/clothes/item5.png'), x: 245, y: 405, worn: false });
 
         //load item images, and assigning x and y position,
-        hats.push({ img: loadImage('../images/game/clothes/hat1.png'), x: 275, y: 100, worn: false });
-        hats.push({ img: loadImage('../images/game/clothes/hat2.png'), x: 275, y: 150, worn: false });
-        hats.push({ img: loadImage('../images/game/clothes/hat3.png'), x: 275, y: 200, worn: false });
-        hats.push({ img: loadImage('../images/game/clothes/hat4.png'), x: 275, y: 250, worn: false });
-        hats.push({ img: loadImage('../images/game/clothes/hat5.png'), x: 275, y: 300, worn: false });
+        hats.push({ img: loadImage('../images/game/clothes/hat1.png'), x: 365, y: 5, worn: false });
+        hats.push({ img: loadImage('../images/game/clothes/hat2.png'), x: 365, y: 105, worn: false });
+        hats.push({ img: loadImage('../images/game/clothes/hat3.png'), x: 365, y: 205, worn: false });
+        hats.push({ img: loadImage('../images/game/clothes/hat4.png'), x: 365, y: 305, worn: false });
+        hats.push({ img: loadImage('../images/game/clothes/hat5.png'), x: 365, y: 405, worn: false });
     }
     //setup function to initialize canvas
     function setup() {
-        let canvas = createCanvas(1000, 600);
+        let canvas = createCanvas(1000, 610);
         canvas.parent('p5-container');
     }
 
