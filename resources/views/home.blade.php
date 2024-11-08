@@ -3,6 +3,6 @@
     <p>welkom bij home</p>
     {{ $theme }}
     {{ $date }}
-    {{ $name }}
+{{--    {{ $name }}--}}
     </x-app-layout>
 

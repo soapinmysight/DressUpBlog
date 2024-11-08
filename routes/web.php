@@ -22,13 +22,7 @@ Route::get('/blogs', function () {
     );
 })->name('blogs');
 
-//for detail page blog
 
-//Route::get('/blogs/{id}', function ($id) {
-//    $blogs = Blog::all();//fetch all blogs
-//    $blog = Arr::first($blogs, fn($blog) => $blog['id'] == $id); //find blog by its id
-//    if (!$blog) { abort(404, 'Blog not found');} //throw error if not found
-//})->name('blog');
 
 
 Route::get('/dashboard', function () {
@@ -46,7 +40,7 @@ Route::get('/about-us', function() {
     return view('about-us');});
 
 
-Route::get('/home/{name}', [HomeController::class, 'index'])->name('home');
+Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 //Route::get('/home/{name}', function (string $name){
 //    return view("home", [
@@ -72,3 +66,4 @@ Route::get('/blog-create', [BlogController::class, 'create'])->middleware(['auth
 
 
 require __DIR__.'/auth.php';
+require __DIR__.'/user.php';

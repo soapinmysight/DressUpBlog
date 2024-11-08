@@ -2,8 +2,10 @@
 
 
 use App\Http\Controllers\User\BlogController;
+use Illuminate\Support\Facades\Route;
 
-Route::middleware(['auth', 'verified'])
+
+Route::middleware(['auth', 'role:user', 'verified'])
     ->prefix('user')  // This adds '/user' to the URL
     ->name('user.')  // This adds 'user.' to the route name
     ->group(function() {

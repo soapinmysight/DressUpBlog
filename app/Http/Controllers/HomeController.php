@@ -13,8 +13,7 @@ class HomeController extends Controller
 //        dd($name);
         $date = Carbon::now()->toDateString();
         $theme = 'blue';
-//        $name = 'Stacy';
-        return view('home', compact('date', 'name','theme'));
+        return view('home', compact('date','theme'));
 //            ->with(['theme' => 'purple']);
     }
 }
