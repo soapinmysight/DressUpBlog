@@ -1,10 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\User;
+use App\Http\Controllers\Controller;
 use App\Models\Blog;
-use App\Models\Comment;
-use App\Models\Theme;
-use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class BlogController extends Controller

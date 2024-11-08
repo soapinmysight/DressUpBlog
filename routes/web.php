@@ -1,15 +1,15 @@
 <?php
 
-use App\Http\Controllers\BlogController;
+use App\Http\Controllers\AboutUsController;
 use App\Http\Controllers\CanvasController;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ThemeController;
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\AboutUsController;
-use App\Http\Controllers\ContactController;
+use App\Http\Controllers\User\BlogController;
 use App\Models\Blog;
+use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
