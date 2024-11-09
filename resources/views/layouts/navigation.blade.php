@@ -14,9 +14,20 @@
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                        {{ __('Dashboard') }}
-                    </x-nav-link>
+
+                    @if(auth()->check() && auth()->user()->role === 'user')
+                        <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                            {{ __('Dashboard') }}
+                        </x-nav-link>
+                    @endif
+
+
+                    @if(auth()->check() && auth()->user()->role === 'admin')
+                            <x-nav-link :href="route('admin.dashboard')" :active="request()->routeIs('admin.dashboard')">
+                                {{ __('Dashboard') }}
+                            </x-nav-link>
+                        @endif
+
 
                     <x-nav-link :href="route('home')" :active="request()->routeIs('home')">
                         {{ __('Home') }}
@@ -34,17 +45,14 @@
                         {{ __('Flashgame') }}
                     </x-nav-link>
 
-{{--                    <x-nav-link :href="route('blogs')" :active="request()->routeIs('blogs')">--}}
-{{--                        {{ __('Blog') }}--}}
-{{--                    </x-nav-link>--}}
-
                     <x-nav-link :href="route('theme.create')" :active="request()->routeIs('theme.create')">
                         {{ __('Create Theme') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('blog.index')" :active="request()->routeIs('blog.index')">
+
+                    <x-nav-link :href="route('user.blog.index')" :active="request()->routeIs('user.blog.index')">
                         {{ __('Blog') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('blog.create')" :active="request()->routeIs('blog.create')">
+                    <x-nav-link :href="route('user.blog.create')" :active="request()->routeIs('user.blog.create')">
                         {{ __('Create a blog') }}
                     </x-nav-link>
                 </div>
@@ -98,6 +106,7 @@
 
     <!-- Responsive Navigation Menu -->
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
+
         <div class="pt-2 pb-3 space-y-1">
             <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                 {{ __('Dashboard') }}

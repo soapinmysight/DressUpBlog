@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\User;
+namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Blog;
 use Illuminate\Http\Request;
@@ -14,7 +14,7 @@ class BlogController extends Controller
     {
         $blogs = Blog::all(); //retrieve all blogs from the database
 
-        return view('user.blog.index', ['blogs' => $blogs]); //return the blogs to a view
+        return view('admin.blog.index', ['blogs' => $blogs]); //return the blogs to a view
     }
 
     /**
@@ -22,7 +22,6 @@ class BlogController extends Controller
      */
     public function create()
     {
-        return view('user.blog.create');
     }
 
     /**
@@ -33,7 +32,7 @@ class BlogController extends Controller
         $request->validate([
             'title' => 'required|max:100',
             'description' => 'required',
-            ]);
+        ]);
         $blog = new Blog();
         $blog->title = $request->input('title');
         $blog->description = $request->input('description');
@@ -43,7 +42,7 @@ class BlogController extends Controller
             $blog->image = $request->file('image')->store('images', 'public');
         }
         $blog->save();
-        return redirect()->route('user.blog.index')->with('success', 'Blog created successfully.');
+        return redirect()->route('blog.index')->with('success', 'Blog created successfully.');
     }
 
     /**
@@ -51,7 +50,7 @@ class BlogController extends Controller
      */
     public function show(Blog $blog)
     {
-        return view('user.blog.show', ['blog' => $blog]); //show a single blog
+        return view('blog.show', ['blog' => $blog]); //show a single blog
 
     }
 
