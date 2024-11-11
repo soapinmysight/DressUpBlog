@@ -12,7 +12,9 @@ class BlogController extends Controller
      */
     public function index()
     {
-        $blogs = Blog::all(); //retrieve all blogs from the database
+        $blogs = Blog::with('user')->get(); // Only load blogs that belong to a user (which should be every blog)
+
+//        $blogs = Blog::all(); //retrieve all blogs from the database
 
         return view('user.blog.index', ['blogs' => $blogs]); //return the blogs to a view
     }
