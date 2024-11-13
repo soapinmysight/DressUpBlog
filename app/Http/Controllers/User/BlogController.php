@@ -4,9 +4,13 @@ namespace App\Http\Controllers\User;
 use App\Http\Controllers\Controller;
 use App\Models\Blog;
 use Illuminate\Http\Request;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests; // Necessary to use authorization for edit/update functionalities
+
 
 class BlogController extends Controller
 {
+    use AuthorizesRequests; // Necessary to use authorization for edit/update functionalities
+
     /**
      * Display a listing of the resource.
      */
@@ -41,6 +45,8 @@ class BlogController extends Controller
         $blog->description = $request->input('description');
         $blog->user_id = auth()->id();  // Associate the blog with the logged-in user
         $blog->active = true;
+
+        // If the blog has an image, store image in public
         if ($request->hasFile('image')) {
             $blog->image = $request->file('image')->store('images', 'public');
         }
@@ -61,17 +67,42 @@ class BlogController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Blog $blogs)
+    public function edit(Blog $blog)
     {
-        //
+        // Authorize the action
+        $this->authorize('update', $blog);
+
+        // Return to edit view
+        return view('user.blog.edit', ['blog' => $blog]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Blog $blogs)
+    public function update(Request $request, Blog $blog)
     {
-        //
+        // Authorize the action
+        $this->authorize('update', $blog);
+
+        // Validate input
+        $request->validate([
+            'title' => 'required|max:100', // Maximum is the same as in create
+            'description' => 'required',
+        ]);
+
+        // Update blog details
+        $blog->title = $request->input('title');
+        $blog->description = $request->input('description');
+
+        // If the new version has an image, store image in public
+        if ($request->hasFile('image')) {
+            $blog->image = $request->file('image')->store('images', 'public');
+        }
+
+        $blog->save();
+
+        // Return to all blogs with succes message
+        return redirect()->route('user.blog.index')->with('success', 'Blog updated successfully.');
     }
 
     /**

@@ -12,7 +12,7 @@
             <p><strong>Author:</strong> {{ $blog->user->name }}</p> {{-- Display the blog author's name --}}
             <p>{{ $blog->description }}</p> {{-- Display the blog description --}}
             <div class="bg-gray-50 flex justify-center rounded-md">
-                <h3 class="text-black dark:hover:text-white"> edit </h3> {{-- Display if user is authorized to edit (if logged in user is the same as the authors id) --}}
+{{--                <h3 class="text-black dark:hover:text-white"> edit </h3> --}}{{-- Display if user is authorized to edit (if logged in user is the same as the authors id) --}}
             </div>
         </div>
         </div>

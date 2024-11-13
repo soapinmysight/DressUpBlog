@@ -7,6 +7,10 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Model;
 class Blog extends Model
 {
+
+//    public mixed $user_id; // needed for blog policies
+    protected $fillable = ['title', 'description', 'user_id', 'active', 'image'];
+
     // Blog belongs to a user, so add belongs relationship
     public function user(): BelongsTo
     {
@@ -20,23 +24,3 @@ class Blog extends Model
     }
 
 }
-//    public static function all(): array
-//    {
-//        return [
-//            [
-//                'id' => 1,
-//                'title' => 'summer outfit',
-//                'description' => 'outfit for the summer',
-//            ],
-//            [
-//                'id' => 1,
-//                'title' => 'winter outfit',
-//                'description' => 'outfit for the winter',
-//            ],
-//            [
-//                'id' => 1,
-//                'title' => 'fall outfit',
-//                'description' => 'outfit for the fall',
-//            ]
-//        ];
-//    }
