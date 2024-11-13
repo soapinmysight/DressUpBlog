@@ -7,9 +7,8 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Model;
 class Blog extends Model
 {
-
-//    public mixed $user_id; // needed for blog policies
-    protected $fillable = ['title', 'description', 'user_id', 'active', 'image'];
+    // fillable for update functionalities
+    protected $fillable = ['title', 'description', 'user_id', 'active', 'image']; // Maybe delete user_id since it doesnt change
 
     // Blog belongs to a user, so add belongs relationship
     public function user(): BelongsTo
