@@ -13,6 +13,17 @@
                     </a>
                 </div>
             @endcan
+
+            @can('delete', $blog)
+                <div class="bg-gray-50 flex justify-center rounded-md">
+                    <form action="{{ route('user.blog.destroy', $blog->id) }}" method="POST">
+                    @csrf
+                @method('DELETE')
+                <button type="submit">Delete</button>
+            </form>
+                </div>
+            @endcan
+
         </div>
 
         {{-- Display the comments --}}

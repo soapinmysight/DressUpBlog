@@ -51,6 +51,7 @@ class BlogController extends Controller
             $blog->image = $request->file('image')->store('images', 'public');
         }
         $blog->save();
+        // To do: display message
         return redirect()->route('user.blog.index')->with('success', 'Blog created successfully.');
     }
 
@@ -81,6 +82,9 @@ class BlogController extends Controller
      */
     public function update(Request $request, Blog $blog)
     {
+        // Find the id or fail
+//        $blog = Blog::findOrFail($blog);
+
         // Authorize the action
         $this->authorize('update', $blog);
 
@@ -99,17 +103,24 @@ class BlogController extends Controller
             $blog->image = $request->file('image')->store('images', 'public');
         }
 
+        // Save updated version of blog
         $blog->save();
 
         // Return to all blogs with succes message
+        // To do: display message
         return redirect()->route('user.blog.index')->with('success', 'Blog updated successfully.');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Blog $blogs)
+    public function destroy(Blog $blog)
     {
-        //
+        // Authorize the action
+        $this->authorize('delete', $blog);
+        // Delete the blog
+        $blog->delete();
+        // Return to index page
+        return redirect()->route('user.blog.index')->with('success', 'Blog deleted successfully.');
     }
 }
