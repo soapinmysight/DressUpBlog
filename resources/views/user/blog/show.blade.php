@@ -26,13 +26,43 @@
 
         </div>
 
-        {{-- Display the comments --}}
+{{--        --}}{{-- Display the comments --}}
+{{--        <div class="comments-section mt-5">--}}
+{{--            <h2>Comments</h2>--}}
+{{--            @foreach($blog->comments as $comment)--}}
+{{--                <p>{{ $comment->content }}</p>--}}
+{{--            @endforeach--}}
+{{--        </div>--}}
+
         <div class="comments-section mt-5">
             <h2>Comments</h2>
             @foreach($blog->comments as $comment)
-                <p>{{ $comment->content }}</p>
+                <div>
+                    <p>{{ $comment->content }}</p>
+                    @can('update', $comment)
+                        <a href="{{ route('user.comment.edit', $comment->id) }}">Edit</a>
+                    @endcan
+                    @can('delete', $comment)
+                        <form action="{{ route('user.comment.destroy', $comment->id) }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit">Delete</button>
+                        </form>
+                    @endcan
+                </div>
             @endforeach
         </div>
+
+        {{-- Add new comment --}}
+        <form method="POST" action="{{ route('user.comment.store', $blog->id) }}">
+            @csrf
+            <label for="content">Add Comment:</label>
+            <textarea id="content" name="content"></textarea>
+            <button type="submit">Post Comment</button>
+        </form>
+
+
+
     </div>
 </x-app-layout>
 {{--<x-app-layout>--}}
