@@ -8,8 +8,13 @@
         <label for="description">Description</label>
         <input type="text" id="description" name="description">
 
-{{--        <label for="image">Image (optional)</label>--}}
-{{--        <input type="file" id="image" name="image" accept="image/*">--}}
+        @if (!empty($imageData))
+            <div>
+                <h3>Preview</h3>
+                <img src="{{ $imageData }}" alt="Selected Outfit" />
+                <input type="hidden" name="image_data" value="{{ $imageData }}">
+            </div>
+        @endif
 
         <button type="submit">Save</button>
     </form>

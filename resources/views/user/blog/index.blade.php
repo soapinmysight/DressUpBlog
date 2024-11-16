@@ -1,4 +1,3 @@
-{{--file for blog.show--}}
 <x-app-layout>
     <h1>Blog</h1>
     @foreach($blogs as $blog)
@@ -11,9 +10,14 @@
           </a>
             <p><strong>Author:</strong> {{ $blog->user->name }}</p> {{-- Display the blog author's name --}}
             <p>{{ $blog->description }}</p> {{-- Display the blog description --}}
-            <div class="bg-gray-50 flex justify-center rounded-md">
-{{--                <h3 class="text-black dark:hover:text-white"> edit </h3> --}}{{-- Display if user is authorized to edit (if logged in user is the same as the authors id) --}}
+            <div>
+                @if ($blog->image)
+                    <img src="{{ asset('storage/' . $blog->image) }}" alt="Blog Image">
+                @endif
+                <h2>{{ $blog->title }}</h2>
+                <p>{{ $blog->description }}</p>
             </div>
+
         </div>
         </div>
     @endforeach

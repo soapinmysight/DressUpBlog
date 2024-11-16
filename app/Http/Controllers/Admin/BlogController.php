@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
+
 use App\Http\Controllers\Controller;
 use App\Models\Blog;
 use Illuminate\Http\Request;
@@ -12,9 +13,23 @@ class BlogController extends Controller
      */
     public function index()
     {
-        $blogs = Blog::all(); //retrieve all blogs from the database
+        $blogs = Blog::with('user')->get(); // Fetch all blogs with their authors
 
         return view('admin.blog.index', ['blogs' => $blogs]); //return the blogs to a view
+    }
+
+    /**
+     * Toggle the active status of a blog.
+     */
+    public function toggle(Blog $blog)
+    {
+        $blog->active = !$blog->active; // Toggle the active status
+        $blog->save();
+
+        return redirect()->route('admin.blog.index')->with(
+            'success',
+            $blog->active ? 'Blog activated successfully.' : 'Blog deactivated successfully.'
+        );
     }
 
     /**

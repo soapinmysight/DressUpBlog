@@ -231,5 +231,36 @@
             saveCanvas('outfit', 'png');
         }
     }
+    document.addEventListener('DOMContentLoaded', () => {
+        document.getElementById('finish-outfit').addEventListener('click', () => {
+        // Get the canvas content as a data URL
+        const canvas = document.querySelector('canvas');
+        const imageData = canvas.toDataURL('image/png');
+
+        // Create a form and post the data to the blog creation page
+        const form = document.createElement('form');
+        form.method = 'POST';
+        form.action = "{{ route('blog.create') }}"; // Laravel route for blog creation
+        form.enctype = 'multipart/form-data';
+
+        // Add CSRF token for Laravel
+        const csrfInput = document.createElement('input');
+        csrfInput.type = 'hidden';
+        csrfInput.name = '_token';
+        csrfInput.value = '{{ csrf_token() }}'; // Add CSRF token
+        form.appendChild(csrfInput);
+
+        // Add the image data as a hidden input
+        const imageInput = document.createElement('input');
+        imageInput.type = 'hidden';
+        imageInput.name = 'image_data';
+        imageInput.value = imageData;
+        form.appendChild(imageInput);
+
+        // Append form to the body and submit it
+        document.body.appendChild(form);
+        form.submit();
+    });
+    });
 
 </script>

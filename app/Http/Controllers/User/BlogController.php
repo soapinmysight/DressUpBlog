@@ -16,7 +16,8 @@ class BlogController extends Controller
      */
     public function index()
     {
-        $blogs = Blog::with('user')->get(); // Only load blogs that belong to a user (which should be every blog)
+        // Only fetch blogs that belong to a user (which should be every blog), and that are active
+        $blogs = Blog::with('user')->where('active', true)->get();
 
 //        $blogs = Blog::all(); //retrieve all blogs from the database
 
@@ -24,11 +25,24 @@ class BlogController extends Controller
     }
 
     /**
+     * Redirect to create with image from flashgame
+     */
+//    public function redirectWithImage(Request $request)
+//    {
+//        $imageData = $request->input('image_data'); // Get image data from the request
+//
+//        // Pass the image data to the blog creation page
+//        return view('user.blog.create', compact('imageData'));
+//    }
+
+    /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(Request $request)
     {
-        return view('user.blog.create');
+        $imageData = $request->input('image_data');
+
+        return view('user.blog.create', compact('imageData'));
     }
 
     /**
@@ -99,15 +113,27 @@ class BlogController extends Controller
         $blog->description = $request->input('description');
 
         // If the new version has an image, store image in public
-        if ($request->hasFile('image')) {
-            $blog->image = $request->file('image')->store('images', 'public');
+//        if ($request->hasFile('image')) {
+//            $blog->image = $request->file('image')->store('images', 'public');
+//        }
+
+        // Handle image upload
+        if ($request->filled('image_data')) {
+            $imageData = $request->input('image_data');
+            $imageData = explode(',', $imageData)[1]; // Remove the data URL prefix
+            $imageData = base64_decode($imageData);
+
+            $imageName = uniqid('outfit_', true) . '.png';
+            $imagePath = storage_path('app/public/images/' . $imageName);
+            file_put_contents($imagePath, $imageData);
+
+            $blog->image = 'images/' . $imageName; // Save relative path in the database
         }
 
         // Save updated version of blog
         $blog->save();
 
         // Return to all blogs with succes message
-        // To do: display message
         return redirect()->route('user.blog.index')->with('success', 'Blog updated successfully.');
     }
 

@@ -10,7 +10,11 @@
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
                     {{ __("Congrats, you hacked into the main frame") }}
-                </div>
+                    {{-- Button to admin blog management --}}
+                    <a href="{{ route('admin.blog.index') }}"
+                       class="mt-4 inline-block px-6 py-2 bg-blue-600 text-white font-semibold rounded-md hover:bg-blue-700">
+                        Manage Blogs
+                    </a>                </div>
             </div>
         </div>
     </div>
