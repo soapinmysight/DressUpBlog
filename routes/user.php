@@ -1,6 +1,7 @@
 <?php
 
 
+use App\Http\Controllers\CanvasController;
 use App\Http\Controllers\User\BlogController;
 use App\Http\Controllers\User\CommentController;
 use Illuminate\Support\Facades\Route;
@@ -17,7 +18,8 @@ Route::middleware(['auth', 'role:user', 'verified'])
         Route::get('/blog/{blog}/edit', [BlogController::class, 'edit'])->name('blog.edit');
         Route::put('/blog/{blog}', [BlogController::class, 'update'])->name('blog.update');
         Route::delete('/blog/{blog}', [BlogController::class, 'destroy'])->name('blog.destroy');
-//        Route::get('/blog/redirect', [BlogController::class, 'redirectWithImage'])->name('blog.redirect');
+        Route::get('/canvas', [CanvasController::class, 'index'])->name('canvas');
+
     });
 
 //routes for comments

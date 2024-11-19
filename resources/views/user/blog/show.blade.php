@@ -26,14 +26,6 @@
 
         </div>
 
-{{--        --}}{{-- Display the comments --}}
-{{--        <div class="comments-section mt-5">--}}
-{{--            <h2>Comments</h2>--}}
-{{--            @foreach($blog->comments as $comment)--}}
-{{--                <p>{{ $comment->content }}</p>--}}
-{{--            @endforeach--}}
-{{--        </div>--}}
-
         <div class="comments-section mt-5">
             <h2>Comments</h2>
             @foreach($blog->comments as $comment)
@@ -53,15 +45,32 @@
             @endforeach
         </div>
 
-        {{-- Add new comment --}}
-        <form method="POST" action="{{ route('user.comment.store', $blog->id) }}">
-            @csrf
-            <label for="content">Add Comment:</label>
-            <textarea id="content" name="content"></textarea>
-            <button type="submit">Post Comment</button>
-        </form>
+{{--        --}}{{-- Add new comment --}}
+{{--        <form method="POST" action="{{ route('user.comment.store', $blog->id) }}">--}}
+{{--            @csrf--}}
+{{--            <label for="content">Add Comment:</label>--}}
+{{--            <textarea id="content" name="content"></textarea>--}}
+{{--            <button type="submit">Post Comment</button>--}}
+{{--        </form>--}}
 
+        {{-- Check if the user has made at least 3 posts --}}
+        @php
+            $postCount = \App\Models\Blog::where('user_id', auth()->id())->count();
+        @endphp
 
+        @if($postCount >= 3)
+            {{-- Add new comment form --}}
+            <form method="POST" action="{{ route('user.comment.store', $blog->id) }}">
+                @csrf
+                <label for="content">Add Comment:</label>
+                <textarea id="content" name="content"></textarea>
+                <button type="submit">Post Comment</button>
+            </form>
+        @else
+            <p class="text-red-500 mt-5">
+                You need to have made at least 3 posts before you can comment.
+            </p>
+        @endif
 
     </div>
 </x-app-layout>

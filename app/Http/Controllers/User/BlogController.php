@@ -27,22 +27,20 @@ class BlogController extends Controller
     /**
      * Redirect to create with image from flashgame
      */
-//    public function redirectWithImage(Request $request)
-//    {
-//        $imageData = $request->input('image_data'); // Get image data from the request
-//
-//        // Pass the image data to the blog creation page
-//        return view('user.blog.create', compact('imageData'));
-//    }
+    public function redirectWithImage(Request $request)
+    {
+        $imageData = $request->input('image_data'); // Get image data from the request
+
+        // Pass the image data to the blog creation page
+        return view('user.blog.create', compact('imageData'));
+    }
 
     /**
      * Show the form for creating a new resource.
      */
     public function create(Request $request)
     {
-        $imageData = $request->input('image_data');
-
-        return view('user.blog.create', compact('imageData'));
+        return view('user.blog.create');
     }
 
     /**

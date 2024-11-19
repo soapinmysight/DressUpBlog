@@ -23,8 +23,6 @@ Route::get('/blogs', function () {
 })->name('blogs');
 
 
-
-
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
@@ -42,18 +40,10 @@ Route::get('/about-us', function() {
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
-//Route::get('/home/{name}', function (string $name){
-//    return view("home", [
-//        "name" => $name
-//    ]);
-//});
 
 Route::get('/contact', [ContactController::class, 'index'])->name('contact');
 Route::get('/about-us', [AboutUsController::class, 'index'])->name('about-us');
 Route::get('/canvas', [CanvasController::class, 'index'])->middleware(['auth', 'verified'])->name('canvas');
-//Route::get('/blog', [BlogController::class, 'index'])->name('blog');
-
-//Route::get('/theme.create', [ThemeController::class, 'index'])->name('create theme');
 
 Route::resource('/theme', ThemeController::class);
 Route::resource('/comment', CommentController::class);
