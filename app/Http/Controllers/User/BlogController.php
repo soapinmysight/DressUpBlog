@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\User;
 use App\Http\Controllers\Controller;
 use App\Models\Blog;
+use App\Models\Theme;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests; // Necessary to use authorization for edit/update functionalities
 
@@ -16,12 +17,13 @@ class BlogController extends Controller
      */
     public function index()
     {
-        // Only fetch blogs that belong to a user (which should be every blog), and that are active
-        $blogs = Blog::with('user')->where('active', true)->get();
+//        // Only fetch blogs that belong to a user (which should be every blog), and that are active
+//        $blogs = Blog::with('user, theme')->where('active', true)->get();
+//        return view('user.blog.index', ['blogs' => $blogs]); //return the blogs to a view
 
-//        $blogs = Blog::all(); //retrieve all blogs from the database
+        $blogs = Blog::with(['user', 'theme'])->where('active', true)->get();
+        return view('user.blog.index', compact('blogs'));
 
-        return view('user.blog.index', ['blogs' => $blogs]); //return the blogs to a view
     }
 
     /**
@@ -40,7 +42,8 @@ class BlogController extends Controller
      */
     public function create(Request $request)
     {
-        return view('user.blog.create');
+        $themes = Theme::all(); // Fetch all themes so we can display them to be chosen
+        return view('user.blog.create', compact('themes'));    // Send themes to be displayed
     }
 
     /**
@@ -56,6 +59,7 @@ class BlogController extends Controller
         $blog->title = $request->input('title');
         $blog->description = $request->input('description');
         $blog->user_id = auth()->id();  // Associate the blog with the logged-in user
+        $blog->theme_id = $request->input('theme_id');
         $blog->active = true;
 
         // If the blog has an image, store image in public

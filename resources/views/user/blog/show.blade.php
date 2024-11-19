@@ -4,6 +4,7 @@
     <div class="h-full flex flex-col justify-center bg-gray-500 w-40 h-100 rounded-md p-5">
         <div class="blog-item">
             <p><strong>Author:</strong> {{ $blog->user->name }}</p>
+            <p><strong>Theme:</strong> {{ $blog->theme->themeTitle }}</p>
             <p>{{ $blog->description }}</p>
 
             @can('update', $blog)

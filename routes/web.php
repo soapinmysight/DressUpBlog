@@ -6,8 +6,8 @@ use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\ThemeController;
 use App\Http\Controllers\User\BlogController;
+use App\Http\Controllers\User\ThemeController;
 use App\Models\Blog;
 use Illuminate\Support\Facades\Route;
 

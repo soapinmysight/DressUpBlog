@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('image', 25000000)->nullable();  // Set as nullable if optional
             $table->boolean('active')->default(true);  // Added default true for active
             $table->foreignId('user_id')->constrained()->onDelete('cascade');  // Define foreign key relationship
+            $table->foreignId('theme_id')->constrained()->onDelete('cascade');  // Define foreign key relationship
             $table->timestamps();
         });
     }

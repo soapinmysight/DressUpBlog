@@ -65,7 +65,7 @@ class BlogController extends Controller
      */
     public function show(Blog $blog)
     {
-        return view('blog.show', ['blog' => $blog]); //show a single blog
+        return view('user.blog.show', ['blog' => $blog]); //show a single blog
 
     }
 

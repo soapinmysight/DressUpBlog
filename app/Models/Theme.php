@@ -7,5 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Theme extends Model
 {
+// On theme has many blogs
+    public function blogs()
+    {
+        return $this->hasMany(Blog::class);
+    }
+
     use HasFactory;
 }

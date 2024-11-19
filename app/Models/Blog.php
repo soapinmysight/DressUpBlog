@@ -8,7 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class Blog extends Model
 {
     // fillable for update functionalities
-    protected $fillable = ['title', 'description', 'user_id', 'active', 'image']; // Maybe delete user_id since it doesnt change
+    protected $fillable = ['title', 'description', 'user_id', 'active', 'image']; // Maybe delete user_id since it doesnt change in update?
+
+    // Blog belongs to a theme, so add belongs relationship
+    public function theme()
+    {
+        return $this->belongsTo(Theme::class);
+    }
+
 
     // Blog belongs to a user, so add belongs relationship
     public function user(): BelongsTo
