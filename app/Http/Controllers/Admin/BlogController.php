@@ -13,10 +13,10 @@ class BlogController extends Controller
      */
     public function index()
     {
-        $blogs = Blog::with('user')->get(); // Fetch all blogs with their authors
-
-        return view('admin.blog.index', ['blogs' => $blogs]); //return the blogs to a view
+        $blogs = Blog::with(['user', 'theme'])->get();
+        return view('admin.blog.index', compact('blogs'));
     }
+
 
     /**
      * Toggle the active status of a blog.
@@ -37,6 +37,7 @@ class BlogController extends Controller
      */
     public function create()
     {
+        //
     }
 
     /**
@@ -44,20 +45,7 @@ class BlogController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'title' => 'required|max:100',
-            'description' => 'required',
-        ]);
-        $blog = new Blog();
-        $blog->title = $request->input('title');
-        $blog->description = $request->input('description');
-        $blog->user_id = auth()->id();  // Associate the blog with the logged-in user
-        $blog->active = true;
-        if ($request->hasFile('image')) {
-            $blog->image = $request->file('image')->store('images', 'public');
-        }
-        $blog->save();
-        return redirect()->route('blog.index')->with('success', 'Blog created successfully.');
+        //
     }
 
     /**
@@ -66,7 +54,6 @@ class BlogController extends Controller
     public function show(Blog $blog)
     {
         return view('user.blog.show', ['blog' => $blog]); //show a single blog
-
     }
 
 

@@ -15,6 +15,7 @@
                         <div class="my-4 p-4 bg-gray-100 dark:bg-gray-700 rounded-md shadow">
                             <h2 class="text-lg font-semibold">{{ $blog->title }}</h2>
                             <p><strong>Author:</strong> {{ $blog->user->name }}</p>
+                            <p><strong>Theme:</strong> {{ $blog->theme->themeTitle }}</p>
                             <p>{{ $blog->description }}</p>
                             <p>
                                 <strong>Status:</strong>
@@ -32,6 +33,14 @@
                                     {{ $blog->active ? 'Deactivate' : 'Activate' }}
                                 </button>
                             </form>
+                            <div class="mt-4">
+                                <h3 class="text-md font-semibold">Comments:</h3>
+                                @foreach($blog->comments as $comment)
+                                    <p class="text-sm p-2 bg-gray-200 dark:bg-gray-600 rounded-md mt-2">
+                                        <strong>{{ $comment->user->name }}:</strong> {{ $comment->content }}
+                                    </p>
+                                @endforeach
+                            </div>
                         </div>
                     @endforeach
                 </div>

@@ -17,24 +17,8 @@ class BlogController extends Controller
      */
     public function index()
     {
-//        // Only fetch blogs that belong to a user (which should be every blog), and that are active
-//        $blogs = Blog::with('user, theme')->where('active', true)->get();
-//        return view('user.blog.index', ['blogs' => $blogs]); //return the blogs to a view
-
         $blogs = Blog::with(['user', 'theme'])->where('active', true)->get();
         return view('user.blog.index', compact('blogs'));
-
-    }
-
-    /**
-     * Redirect to create with image from flashgame
-     */
-    public function redirectWithImage(Request $request)
-    {
-        $imageData = $request->input('image_data'); // Get image data from the request
-
-        // Pass the image data to the blog creation page
-        return view('user.blog.create', compact('imageData'));
     }
 
     /**
@@ -77,7 +61,6 @@ class BlogController extends Controller
     public function show(Blog $blog)
     {
         return view('user.blog.show', ['blog' => $blog]); //show a single blog
-
     }
 
 
@@ -98,9 +81,6 @@ class BlogController extends Controller
      */
     public function update(Request $request, Blog $blog)
     {
-        // Find the id or fail
-//        $blog = Blog::findOrFail($blog);
-
         // Authorize the action
         $this->authorize('update', $blog);
 
@@ -113,11 +93,6 @@ class BlogController extends Controller
         // Update blog details
         $blog->title = $request->input('title');
         $blog->description = $request->input('description');
-
-        // If the new version has an image, store image in public
-//        if ($request->hasFile('image')) {
-//            $blog->image = $request->file('image')->store('images', 'public');
-//        }
 
         // Handle image upload
         if ($request->filled('image_data')) {
