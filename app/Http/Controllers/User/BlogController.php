@@ -115,6 +115,14 @@ class BlogController extends Controller
     }
 
     /**
+     * Display the specified resource.
+     */
+    public function delete(Blog $blog)
+    {
+        return view('user.blog.delete', ['blog' => $blog]); //show a single blog
+    }
+
+    /**
      * Remove the specified resource from storage.
      */
     public function destroy(Blog $blog)

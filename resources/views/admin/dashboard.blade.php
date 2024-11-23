@@ -14,7 +14,12 @@
                     <a href="{{ route('admin.blog.index') }}"
                        class="mt-4 inline-block px-6 py-2 bg-blue-600 text-white font-semibold rounded-md hover:bg-blue-700">
                         Manage Blogs
-                    </a>                </div>
+                    </a>
+                    <a href="{{ route('admin.theme.index') }}"
+                       class="mt-4 inline-block px-6 py-2 bg-blue-600 text-white font-semibold rounded-md hover:bg-blue-700">
+                        Manage Themes
+                    </a>
+                </div>
             </div>
         </div>
     </div>

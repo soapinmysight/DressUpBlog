@@ -16,6 +16,7 @@ Route::middleware(['auth', 'role:user', 'verified'])
         Route::get('/blog/{blog}', [BlogController::class, 'show'])->name('blog.show'); // Route to show a single blog
         Route::get('/blog-create', [BlogController::class, 'create'])->middleware(['auth', 'verified'])->name('blog.create'); // Route to create a blogs
         Route::get('/blog/{blog}/edit', [BlogController::class, 'edit'])->name('blog.edit');
+        Route::get('/blog/{blog}/delete', [BlogController::class, 'delete'])->name('blog.delete');
         Route::put('/blog/{blog}', [BlogController::class, 'update'])->name('blog.update');
         Route::delete('/blog/{blog}', [BlogController::class, 'destroy'])->name('blog.destroy');
         Route::get('/canvas', [CanvasController::class, 'index'])->name('canvas');

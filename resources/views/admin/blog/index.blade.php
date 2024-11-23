@@ -33,14 +33,15 @@
                                     {{ $blog->active ? 'Deactivate' : 'Activate' }}
                                 </button>
                             </form>
-                            <div class="mt-4">
-                                <h3 class="text-md font-semibold">Comments:</h3>
-                                @foreach($blog->comments as $comment)
-                                    <p class="text-sm p-2 bg-gray-200 dark:bg-gray-600 rounded-md mt-2">
-                                        <strong>{{ $comment->user->name }}:</strong> {{ $comment->content }}
-                                    </p>
-                                @endforeach
-                            </div>
+{{--                                To display comments, a controller for admin comments needs to be made--}}
+{{--                            <div class="mt-4">--}}
+{{--                                <h3 class="text-md font-semibold">Comments:</h3>--}}
+{{--                                @foreach($blog->comments as $comment)--}}
+{{--                                    <p class="text-sm p-2 bg-gray-200 dark:bg-gray-600 rounded-md mt-2">--}}
+{{--                                        <strong>{{ $comment->user->name }}:</strong> {{ $comment->content }}--}}
+{{--                                    </p>--}}
+{{--                                @endforeach--}}
+{{--                            </div>--}}
                         </div>
                     @endforeach
                 </div>

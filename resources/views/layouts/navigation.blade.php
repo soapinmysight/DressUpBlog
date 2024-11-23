@@ -29,24 +29,20 @@
                         @endif
 
 
-                    <x-nav-link :href="route('home')" :active="request()->routeIs('home')">
-                        {{ __('Home') }}
-                    </x-nav-link>
+{{--                    <x-nav-link :href="route('home')" :active="request()->routeIs('home')">--}}
+{{--                        {{ __('Home') }}--}}
+{{--                    </x-nav-link>--}}
 
-                    <x-nav-link :href="route('contact')" :active="request()->routeIs('contact')">
-                        {{ __('Contact') }}
-                    </x-nav-link>
+{{--                    <x-nav-link :href="route('contact')" :active="request()->routeIs('contact')">--}}
+{{--                        {{ __('Contact') }}--}}
+{{--                    </x-nav-link>--}}
 
-                    <x-nav-link :href="route('about-us')" :active="request()->routeIs('about-us')">
-                        {{ __('About Us') }}
-                    </x-nav-link>
+{{--                    <x-nav-link :href="route('about-us')" :active="request()->routeIs('about-us')">--}}
+{{--                        {{ __('About Us') }}--}}
+{{--                    </x-nav-link>--}}
 
                     <x-nav-link :href="route('canvas')" :active="request()->routeIs('canvas')">
                         {{ __('Flashgame') }}
-                    </x-nav-link>
-
-                    <x-nav-link :href="route('theme.create')" :active="request()->routeIs('theme.create')">
-                        {{ __('Create Theme') }}
                     </x-nav-link>
 
                     <x-nav-link :href="route('user.blog.index')" :active="request()->routeIs('user.blog.index')">
