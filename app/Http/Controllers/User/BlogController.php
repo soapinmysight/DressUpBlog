@@ -15,10 +15,17 @@ class BlogController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $blogs = Blog::with(['user', 'theme'])->where('active', true)->get();
-        return view('user.blog.index', compact('blogs'));
+        $themes = Theme::all(); // Fetch all themes, so we can display them to be chosen
+        $query = Blog::with(['user', 'theme'])->where('active', true);
+        // Apply theme filter if a theme_id is provided
+        if ($request->filled('theme_id')) {
+            $query->where('theme_id', $request->input('theme_id'));
+        }
+        $blogs = $query->get(); // Retrieve the filtered blogs
+
+        return view('user.blog.index', compact('blogs', 'themes'));
     }
 
     /**

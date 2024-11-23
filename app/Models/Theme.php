@@ -7,7 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Theme extends Model
 {
-// On theme has many blogs
+    protected $guarded  = ['id' , 'created_at' , 'updated_at'];
+    protected $fillable = ['themeTitle'];
     public function blogs()
     {
         return $this->hasMany(Blog::class);

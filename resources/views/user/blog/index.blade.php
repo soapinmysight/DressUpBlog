@@ -22,6 +22,25 @@
                             {{ session('error') }}
                         </div>
                     @endif
+
+{{--                    Filter on themes--}}
+                    <div class="mx-8 my-2">
+                        <form method="GET" action="{{ route('user.blog.index') }}" class="mb-4">
+                            <label for="theme" class="block text-sm font-medium text-gray-700">Filter by Theme</label>
+                            <select id="theme" name="theme_id" class="block w-1/3 mt-1 border-gray-300 rounded-md shadow-sm focus:ring focus:ring-indigo-200 focus:border-indigo-300">
+                                <option value="">All Themes</option>
+                                @foreach($themes as $theme)
+                                    <option value="{{ $theme->id }}" {{ request('theme_id') == $theme->id ? 'selected' : '' }}>
+                                        {{ $theme->themeTitle }}
+                                    </option>
+                                @endforeach
+                            </select>
+                            <button type="submit" class="inline-block px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 mt-2">
+                                Filter
+                            </button>
+                        </form>
+                    </div>
+
                 </div>
                 <div class="p-6 text-gray-900 dark:text-gray-100">
                     @foreach($blogs as $blog)
