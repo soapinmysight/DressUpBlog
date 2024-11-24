@@ -19,12 +19,26 @@ class BlogController extends Controller
     {
         $themes = Theme::all(); // Fetch all themes, so we can display them to be chosen
         $query = Blog::with(['user', 'theme'])->where('active', true);
-        // Apply theme filter if a theme_id is provided
+// If request is filled with something that has the key "theme_id"
         if ($request->filled('theme_id')) {
+// Filter blogs based on the selected `theme_id` by adding a where condition
             $query->where('theme_id', $request->input('theme_id'));
         }
-        $blogs = $query->get(); // Retrieve the filtered blogs
+// If request is filled with something that has the key "search"
+        if ($request->filled('search')) {
+            // Retrieve the value of the 'search' input
+            $searchTerm = $request->input('search');
+            // Add a nested condition to the query
+            $query->where(function ($q) use ($searchTerm) {
+                // Match blogs where the title contains the search term
+                $q->where('title', 'like', "%{$searchTerm}%")
+                    // Or match blogs where the description contains the search term
+                    ->orWhere('description', 'like', "%{$searchTerm}%");
+            });
+        }
+        $blogs = $query->get(); // Retrieve the filtered blogs by fetching the query and storing it in $blogs
 
+        // Display (filtered) blogs and themes (which user can filter with)
         return view('user.blog.index', compact('blogs', 'themes'));
     }
 
