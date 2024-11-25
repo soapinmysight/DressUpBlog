@@ -12,8 +12,9 @@
                         <p><strong>Author:</strong> {{ $blog->user->name }}</p>
                         <p><strong>Theme:</strong> {{ $blog->theme->themeTitle }}</p>
                         <p>{{ $blog->description }}</p>
+                        <img src="{{ asset('storage/' . $blog->image) }}" alt="Blog Image">
 
-                        @can('update', $blog)
+                    @can('update', $blog)
                             <div class="mt-4">
                                 <a href="{{ route('user.blog.edit', $blog->id) }}"
                                    class="px-4 py-2 bg-blue-600 text-white rounded-md shadow">Edit</a>

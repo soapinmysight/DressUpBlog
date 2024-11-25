@@ -32,14 +32,8 @@
                                       class="w-full rounded-md shadow-sm border-gray-300 dark:bg-gray-700 dark:text-gray-100">
                         </div>
 
-
-                        @if (!empty($imageData))
-                            <div class="mb-4">
-                                <h3>Preview</h3>
-                                <img src="{{ request('image_data') }}" alt="Selected Outfit" />
-                                <input type="hidden" name="image_data" value="{{ request('image_data') }}">
-                            </div>
-                        @endif
+                        @include('components.game_partial')
+{{-- when clicking on the "Save", the canvas in the game_partial should be converted as an image via base64 and saved to the database, along with the rest of the blog--}}
                         <button type="submit" class="px-4 py-2 bg-blue-600 text-white rounded-md shadow">Save</button>
                     </form>
                 </div>

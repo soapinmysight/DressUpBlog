@@ -1,4 +1,4 @@
-<p>press s to save</p>
+{{--<p>press s to save</p>--}}
 <div id="p5-container"></div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.8.0/p5.js"></script>
 
@@ -225,12 +225,13 @@
         }
     }
 
+    // old code
     //if pressed on s, save canvas as image (png) and assign the filename "outfit"
-    function keyPressed() {
-        if (key === 's') {
-            saveCanvas('outfit', 'png');
-        }
-    }
+    // function keyPressed() {
+    //     if (key === 's') {
+    //         saveCanvas('outfit', 'png');
+    //     }
+    // }
 
 
 </script>

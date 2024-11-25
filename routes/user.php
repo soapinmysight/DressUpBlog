@@ -5,9 +5,9 @@ use App\Http\Controllers\CanvasController;
 use App\Http\Controllers\User\BlogController;
 use App\Http\Controllers\User\CommentController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
 
-
-//routes for blog
+// Routes for blog
 Route::middleware(['auth', 'role:user', 'verified'])
     ->prefix('user')  // This adds '/user' to the URL
     ->name('user.')  // This adds 'user.' to the route name
@@ -23,7 +23,7 @@ Route::middleware(['auth', 'role:user', 'verified'])
 
     });
 
-//routes for comments
+// Routes for comments
 Route::middleware(['auth', 'role:user', 'verified'])
     ->prefix('user')
     ->name('user.')
@@ -33,4 +33,6 @@ Route::middleware(['auth', 'role:user', 'verified'])
         Route::put('/comment/{comment}', [CommentController::class, 'update'])->name('comment.update');
         Route::delete('/comment/{comment}', [CommentController::class, 'destroy'])->name('comment.destroy');
     });
+
 require __DIR__.'/auth.php';
+
