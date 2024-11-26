@@ -1,5 +1,12 @@
 {{--<p>press s to save</p>--}}
-<div id="p5-container"></div>
+<button onclick="convertToImage()">Convert to Image</button>
+
+<div id="p5-container">
+
+</div>
+<style>
+
+</style>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.8.0/p5.js"></script>
 
 <script>
@@ -24,6 +31,8 @@
 
     let hats = []; //array for shoes
     let selectedHat = null; //variable to track which shoe is being worn
+
+
 
     function preload() {
         //load image from public
@@ -232,6 +241,5 @@
     //         saveCanvas('outfit', 'png');
     //     }
     // }
-
 
 </script>

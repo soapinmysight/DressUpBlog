@@ -67,6 +67,20 @@ class BlogController extends Controller
         $blog->theme_id = $request->input('theme_id');
         $blog->active = true;
 
+        // Handle base64 image data
+        if ($request->filled('image_data')) {
+            $imageData = $request->input('image_data');
+            $imageData = explode(',', $imageData)[1]; // Remove the data URL prefix
+            $imageData = base64_decode($imageData);
+
+            $imageName = uniqid('blog_image_', true) . '.png';
+            $imagePath = storage_path('app/public/outfits/' . $imageName);
+
+            file_put_contents($imagePath, $imageData);
+
+            $blog->image = 'outfits/' . $imageName; // Save relative path in the database
+        }
+
         // If the blog has an image, store image in public
         if ($request->hasFile('image')) {
             $blog->image = $request->file('image')->store('images', 'public');
@@ -114,19 +128,30 @@ class BlogController extends Controller
         // Update blog details
         $blog->title = $request->input('title');
         $blog->description = $request->input('description');
+        $blog->theme_id = $request->input('theme_id');
 
         // Handle image upload
         if ($request->filled('image_data')) {
+            // Get image data from request
             $imageData = $request->input('image_data');
-            $imageData = explode(',', $imageData)[1]; // Remove the data URL prefix
-            $imageData = base64_decode($imageData);
+            // Log the image data to check its contents
+            error_log('Image Data: ' . $imageData);
+            // Split the base64 string to remove the data URL
+            // and extract only the actual base64-encoded image content
+            $base64 = explode(',', $imageData)[1];
+            // Decode the base64 string into binary image data
+            $image = base64_decode($base64);
 
+            // Add unique id to filename
             $imageName = uniqid('outfit_', true) . '.png';
-            $imagePath = storage_path('app/public/images/' . $imageName);
-            file_put_contents($imagePath, $imageData);
+            // Add unique filename to imagePath and store in variable
+            $imagePath = storage_path('app/public/outfits/' . $imageName);
+            // Put the imageData in filePath with imageName
+            file_put_contents($imagePath, $image);
 
-            $blog->image = 'images/' . $imageName; // Save relative path in the database
+            $blog->image = $imagePath; // Save path in database
         }
+
 
         // Save updated version of blog
         $blog->save();

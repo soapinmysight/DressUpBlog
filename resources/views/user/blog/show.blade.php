@@ -14,6 +14,7 @@
                         <p>{{ $blog->description }}</p>
                         <img src="{{ asset('storage/' . $blog->image) }}" alt="Blog Image">
 
+{{--                        Display edit button if user is allowed to--}}
                     @can('update', $blog)
                             <div class="mt-4">
                                 <a href="{{ route('user.blog.edit', $blog->id) }}"
@@ -21,6 +22,7 @@
                             </div>
                         @endcan
 
+{{--                        Display delete button if user is allowed to--}}
                         @can('delete', $blog)
                             <div class="mt-4">
                                 <a href="{{ route('user.blog.delete', $blog->id) }}"
@@ -29,6 +31,7 @@
                         @endcan
                     </div>
 
+{{--                     Display comments--}}
                     <div class="comments-section mt-5">
                         <h2 class="text-lg font-semibold mb-4">Comments</h2>
                         @foreach($blog->comments as $comment)
@@ -48,10 +51,11 @@
                             </div>
                         @endforeach
 
+{{--Count how many posts user has--}}
                         @php
                             $postCount = \App\Models\Blog::where('user_id', auth()->id())->count();
                         @endphp
-
+{{--If user has 3 posts or more, allow user to post a comment--}}
                         @if($postCount >= 3)
                             <form method="POST" action="{{ route('user.comment.store', $blog->id) }}" class="mt-4">
                                 @csrf
@@ -60,6 +64,7 @@
                                           class="w-full rounded-md shadow-sm border-gray-300 dark:bg-gray-700 dark:text-gray-100"></textarea>
                                 <button type="submit" class="px-4 py-2 bg-blue-600 text-white rounded-md shadow mt-2">Post Comment</button>
                             </form>
+{{--If user doesn't, display message--}}
                         @else
                             <p class="text-red-500 mt-5">
                                 You need to have made at least 3 posts before you can comment.

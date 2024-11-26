@@ -69,7 +69,7 @@
                             <p>{{ $blog->description }}</p>
                             @if ($blog->image)
                                 <div class="mt-2">
-                                    <img src="{{ asset('storage/' . $blog->image) }}" alt="Blog Image"
+                                    <img src="{{ asset('storage/' . $blog->image) }}" alt="{{ $blog->title }} image"
                                          class="rounded-md shadow w-full h-auto">
                                 </div>
                             @endif

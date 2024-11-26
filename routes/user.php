@@ -14,6 +14,7 @@ Route::middleware(['auth', 'role:user', 'verified'])
     ->group(function() {
         Route::get('/blog', [BlogController::class, 'index'])->name('blog.index'); // Route to list all blogs
         Route::get('/blog/{blog}', [BlogController::class, 'show'])->name('blog.show'); // Route to show a single blog
+        Route::post('/blog', [BlogController::class, 'store'])->name('blog.store');
         Route::get('/blog-create', [BlogController::class, 'create'])->middleware(['auth', 'verified'])->name('blog.create'); // Route to create a blogs
         Route::get('/blog/{blog}/edit', [BlogController::class, 'edit'])->name('blog.edit');
         Route::get('/blog/{blog}/delete', [BlogController::class, 'delete'])->name('blog.delete');

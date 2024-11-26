@@ -27,7 +27,7 @@
                             </p>
                             <form method="POST" action="{{ route('admin.blog.toggle', $blog->id) }}">
                                 @csrf
-                                @method('PATCH')
+                                @method('POST')
                                 <button type="submit"
                                         class="mt-2 px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700">
                                     {{ $blog->active ? 'Deactivate' : 'Activate' }}

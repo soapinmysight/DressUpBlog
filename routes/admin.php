@@ -14,7 +14,7 @@ Route::middleware(['auth', 'role:admin', 'verified'])
         Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
         Route::get('/blog', [AdminBlogController::class, 'index'])->name('blog.index'); // Route to list all blogs
         Route::get('/blog/{blog}', [BlogController::class, 'show'])->name('blog.show'); // Route to show a single blog
-        Route::patch('/blog/{blog}/toggle', [AdminBlogController::class, 'toggle'])->name('blog.toggle'); // Route to toggle blog activity
+        Route::post('/blog/{blog}/toggle', [AdminBlogController::class, 'toggle'])->name('blog.toggle'); // Route to toggle blog activity
         Route::resource('theme', ThemeController::class)->except(['show']); // Excludes 'show' since it's not used
     });
 
