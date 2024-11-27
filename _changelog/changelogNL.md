@@ -13,7 +13,7 @@ Project gestart en Breeze toegevoegd.
 - **Testcontrollers**: AboutUsController, HomeController, ContactController
 - **Changelog**: Bestand toegevoegd met mock-up voor changelogs.
 - **ERD, MoSCoW, and planning**: Ik heb een MoSCoW-indeling en plannig gemaakt, die zie je hier:
-- <p align="center"><img src="./images/ERD.png" height="400"></p>
+- <p><img src="./images/ERD.png" height="400" alt="ERD"></p>
 - <p align="center"><img src="./images/Moscow.png" height="400"></p>
 - <p align="center"><img src="./images/Planning.png" height="400"></p>
 
