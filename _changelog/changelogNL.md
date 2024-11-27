@@ -4,6 +4,24 @@
 
 ## Over dit project
 Dit project is gebouwd met Laravel 11 en p5.js.
+---
+### 07/10/2024
+Voordat ik met dit directory begonnen was, heb ik een test opdracht uitgevored met een view, controller, en een route in web.php
+<p align="center"><img src="./images/view711.png" height="400" alt="ERD"></p>
+<p align="center"><img src="./images/route711.png.png" height="400" alt="moscow"></p>
+<p align="center"><img src="./images/controller711.png.png" height="400" alt="planning"></p>
+Dit was wel ingewikkeld omdat ik niet eerder met laravel heb gewerkt, maar met de github pagina met de opdracht en de laracast liep ik nergens tegen aan.
+### Bron
+[Laracast Laravel 11 Episode 1](https://laracasts.com/series/30-days-to-learn-laravel-11/episodes/1)
+https://github.com/HR-CMGT/PRG05-2024-2025/blob/main/instructies/new-project-and-route.md
+https://github.com/HR-CMGT/PRG05-2023-2024/blob/main/opdrachten/les3.md#opdracht-1---basisproject-laravel
+https://github.com/HR-CMGT/PRG05-2024-2025/blob/main/opdrachten/les1.md
+https://github.com/HR-CMGT/PRG05-2024-2025/blob/main/opdrachten/les3.md
+https://laravel.com/docs/10.x/routing#route-parameters
+https://laravel.com/docs/11.x/controllers
+https://laravel.com/docs/11.x/views
+https://laravel.com/docs/11.x/blade
+https://laravel.com/docs/11.x/urls
 
 ---
 ### 09/10/2024
@@ -32,6 +50,8 @@ FOTO ERD
 #### Toegevoegd
 - **Dress-up Flashgame**: Placeholder personage en kleding in public, logica voor aan- en uitkleden in canvas.blade.php. Opmerkingen toegevoegd voor leesbaarheid. game.js toegevoegd voor toekomstige logica.
 - **Een navigatiebalk**: Toegevoegd in contact.blade.php en about-us.blade.php.
+- Dit is templating (layout)
+<p align="center"><img src="./images/layout1411.png" height="400" alt="layout"></p>
 
 #### Gewijzigd
 - **web.php**: Route toegevoegd voor canvas.blade.php.
@@ -49,6 +69,7 @@ FOTO ERD
 [P5.js loadImage](https://p5js.org/reference/p5/loadImage/)  
 [P5.js save image](https://p5js.org/reference/p5.Image/save/)  
 [Laracast Laravel 11 Episode 3](https://laracasts.com/series/30-days-to-learn-laravel-11/episodes/3)
+https://laravel.com/docs/11.x/blade
 
 ---
 ### 16/10/2024
@@ -58,6 +79,8 @@ FOTO ERD
 
 #### Gewijzigd
 - **web.php**: Route toegevoegd voor canvas.blade.php.
+- **Game logic in partial**: Ik heb de game logic in een partial gezet, zodat als ik later dingen ga toevoegen aan mijn view hij netjes en makkelijk te begrijpen blijft.
+<p align="center"><img src="./images/partial1611.png" height="400" alt="partial"></p>
 
 #### Opgelost
 - **home.blade.php en layout.blade.php**: Routing en controllers werken correct.
