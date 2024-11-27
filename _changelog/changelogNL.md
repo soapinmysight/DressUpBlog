@@ -12,10 +12,10 @@ Project gestart en Breeze toegevoegd.
 - **Testpagina's**: about-us, test, home, contact
 - **Testcontrollers**: AboutUsController, HomeController, ContactController
 - **Changelog**: Bestand toegevoegd met mock-up voor changelogs.
-- **ERD, MoSCoW, and planning**: Ik heb een MoSCoW-indeling en plannig gemaakt, die zie je hier:
-- <p><img src="./images/ERD.png" height="400" alt="ERD"></p>
-- <p align="center"><img src="./images/Moscow.png" height="400"></p>
-- <p align="center"><img src="./images/Planning.png" height="400"></p>
+- **ERD, MoSCoW, and planning**: Ik heb een MoSCoW-indeling en planning gemaakt, die zie je hier:
+<p align="center"><img src="./images/ERD.png" height="400" alt="ERD"></p>
+<p align="center"><img src="./images/Moscow.png" height="400" alt="moscow"></p>
+<p align="center"><img src="./images/Planning.png" height="400" alt="planning"></p>
 
 FOTO MOSCOW
 FOTO PLANNING
@@ -37,7 +37,7 @@ FOTO ERD
 - **web.php**: Route toegevoegd voor canvas.blade.php.
 - **layout.blade.php**: canvas.blade.php toegevoegd aan navigatiebalk.
 - **ERD**: Ik heb feedback van Bob gekregen op mijn ERD. Dat was om een losse tabel voor de thema's te maken. Dat ik nog geen manier had om blogs actief en inactief kunnen maken door de admins. En de id in een tabel gewoon id te noemen, inplaats van bijvoorbeeld user_id. Hieronder zie je de nieuwe ERD.
-FOTO NIEUWE ERD
+<p align="center"><img src="./images/ERD2.png" height="400" alt="tweede ERD"></p>
 
 #### Opgelost
 - **home.blade.php en layout.blade.php**: Content van home staat correct in home en routing werkt.
@@ -94,6 +94,8 @@ FOTO NIEUWE ERD
 #### Toegevoegd
 - **Post maken**: Formulier voor het aanmaken van posts in `BlogController.php`, updates in navigatie en routes.
 - **Gebruikerskoppeling aan blogs**: `user_id` toegevoegd aan blogs om de maker te volgen. Styling van `index.blade.php` gestart.
+- **Nieuwe planning**: Vanwege uitstel op de deadline door persoonlijke omstandigdheden, heb ik een nieuwe plannng gemaakt.
+<p align="center"><img src="./images/planning2.png" height="400" alt="tweede planning"></p>
 
 ---
 ### 07/11/2024
