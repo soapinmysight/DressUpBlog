@@ -95,7 +95,7 @@ FOTO ERD
 - **Post maken**: Formulier voor het aanmaken van posts in `BlogController.php`, updates in navigatie en routes.
 - **Gebruikerskoppeling aan blogs**: `user_id` toegevoegd aan blogs om de maker te volgen. Styling van `index.blade.php` gestart.
 - **Nieuwe planning**: Vanwege uitstel op de deadline door persoonlijke omstandigdheden, heb ik een nieuwe plannng gemaakt.
-<p align="center"><img src="./images/planning2.png" height="400" alt="tweede planning"></p>
+<p align="center"><img src="./images/planning2.jpg" height="400" alt="tweede planning"></p>
 
 ---
 ### 07/11/2024
