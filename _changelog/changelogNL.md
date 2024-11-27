@@ -6,10 +6,10 @@
 Dit project is gebouwd met Laravel 11 en p5.js.
 ---
 ### 07/10/2024
-Voordat ik met dit directory begonnen was, heb ik een test opdracht uitgevored met een view, controller, en een route in web.php
-<p align="center"><img src="./images/view711.png" height="400" alt="ERD"></p>
-<p align="center"><img src="./images/route711.png.png" height="400" alt="moscow"></p>
-<p align="center"><img src="./images/controller711.png.png" height="400" alt="planning"></p>
+Voordat ik met dit directory begonnen was, heb ik een test opdracht uitgevoerd met een view, controller, en een route in web.php
+<p align="center"><img src="./images/view711.png" height="400" alt="view"></p>
+<p align="center"><img src="./images/route711.png" height="400" alt="rout"></p>
+<p align="center"><img src="./images/controller711.png" height="400" alt="controller"></p>
 Dit was wel ingewikkeld omdat ik niet eerder met laravel heb gewerkt, maar met de github pagina met de opdracht en de laracast liep ik nergens tegen aan.
 ### Bron
 [Laracast Laravel 11 Episode 1](https://laracasts.com/series/30-days-to-learn-laravel-11/episodes/1)
@@ -101,18 +101,20 @@ https://laravel.com/docs/11.x/blade
 - **Blog- en commentfunctionaliteiten:**:
 
 Met mijn migratiebestanden initialiseer ik blog- en commentaartabellen in de database
-<p align="center"><img src="./images/migrationblog1711.png" height="400" alt="partial"></p>
-<p align="center"><img src="./images/migrationcomment1711.png" height="400" alt="partial"></p>
-Met het model maak ik de relatie tussen blog en comments
-<p align="center"><img src="./images/modelblog1711.png" height="400" alt="partial"></p>
-<p align="center"><img src="./images/modelcomment1711.png" height="400" alt="partial"></p>
+<p align="center"><img src="./images/migrationblog1711.png" height="400" alt="migrationblog1711"></p>
+<p align="center"><img src="./images/migrationcomment1711.png" height="400" alt="migrationcomment1711"></p>
+Met het model maak ik de relatie tussen blog en comments. Dit is een 1 op veel relatie, een blog kan veel comments hebben.
+<p align="center"><img src="./images/modelblog1711.png" height="400" alt="modelblog1711"></p>
+<p align="center"><img src="./images/modelcomment1711.png" height="400" alt="modelcomment1711"></p>
 Hier gebruik ik Eloquent om query's uit te voeren op het database:
-<p align="center"><img src="./images/eloquentblog1711.png" height="400" alt="partial"></p>
-<p align="center"><img src="./images/eloquentcomment1711.png" height="400" alt="partial"></p>
+<p align="center"><img src="./images/eloquentblog1711.png" height="400" alt="eloquentblog1711"></p>
+<p align="center"><img src="./images/eloquentcomment1711.png" height="400" alt="eloquentcomment1711"></p>
 
 #### Gewijzigd
 - **web.php**: Routes toegevoegd voor nieuwe functies.
 - **Navigatiebalk**: Breeze-navigatie gebruikt in plaats van eigen versie.
+- **Login**: Via breeze heb ik ook login, register, logout, en accountswijziging functionaliteiten
+<p align="center"><img src="./images/login.png" height="400" alt="login"></p>
 
 ### Bron
 [Eloquent Relationships Documentatie](https://laravel.com/docs/11.x/eloquent-relationships)  
