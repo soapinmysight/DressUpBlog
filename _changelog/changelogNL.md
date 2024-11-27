@@ -92,11 +92,23 @@ https://laravel.com/docs/11.x/blade
 ---
 ### 17/10/2024
 #### Toegevoegd
-- **Blog-, Thema- en Reactiefuncties**:
+- **Blog-, Thema- en Commentefuncties**:
     - Controllers, modellen en migraties gemaakt.
     - Blog: `index.blade.php` (blogoverzicht) en `show.blade.php` (details).
     - Thema: `create.blade.php` voor nieuwe thema’s.
-    - Reacties: Begin gemaakt met tonen en toevoegen van reacties. Relaties in modellen bijgewerkt.
+    - Comment: Begin gemaakt met tonen en toevoegen van reacties. Relaties in modellen bijgewerkt.
+
+- **Blog- en commentfunctionaliteiten:**:
+
+Met mijn migratiebestanden initialiseer ik blog- en commentaartabellen in de database
+<p align="center"><img src="./images/migrationblog1711.png" height="400" alt="partial"></p>
+<p align="center"><img src="./images/migrationcomment1711.png" height="400" alt="partial"></p>
+Met het model maak ik de relatie tussen blog en comments
+<p align="center"><img src="./images/modelblog1711.png" height="400" alt="partial"></p>
+<p align="center"><img src="./images/modelcomment1711.png" height="400" alt="partial"></p>
+Hier gebruik ik Eloquent om query's uit te voeren op het database:
+<p align="center"><img src="./images/eloquentblog1711.png" height="400" alt="partial"></p>
+<p align="center"><img src="./images/eloquentcomment1711.png" height="400" alt="partial"></p>
 
 #### Gewijzigd
 - **web.php**: Routes toegevoegd voor nieuwe functies.
@@ -105,6 +117,8 @@ https://laravel.com/docs/11.x/blade
 ### Bron
 [Eloquent Relationships Documentatie](https://laravel.com/docs/11.x/eloquent-relationships)  
 [Laracast Laravel 11 Episode 11](https://laracasts.com/series/30-days-to-learn-laravel-11/episodes/11)
+[Eloquent ORM](https://laravel.com/docs/5.0/eloquent)  
+[ORM explanation Stackoverflow](https://stackoverflow.com/questions/1279613/what-is-an-orm-how-does-it-work-and-how-should-i-use-one)
 
 ---
 ### 18/10/2024

@@ -77,6 +77,8 @@ Initialized project and added Breeze
 
 ### Source
 [Eloquent Relationships Documentation](https://laravel.com/docs/11.x/eloquent-relationships)  
+[Eloquent ORM](https://laravel.com/docs/5.0/eloquent)  
+[ORM explanation Stackoverflow](https://stackoverflow.com/questions/1279613/what-is-an-orm-how-does-it-work-and-how-should-i-use-one)  
 [Laracast Laravel 11 Episode 11](https://laracasts.com/series/30-days-to-learn-laravel-11/episodes/11)
 
 ---
