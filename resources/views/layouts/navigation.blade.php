@@ -6,10 +6,8 @@
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
 
-                    <a href="{{ route('dashboard') }}">
                         <img src="{{ Vite::asset('resources/images/person_placeholder.png') }}" alt="Hat Blue" class="block h-9 w-auto fill-current text-gray-800 dark:text-gray-200" />
 {{--                        <img src="{{ asset('storage/person_placeholder.png') }}" alt="Logo" class="block h-9 w-auto fill-current text-gray-800 dark:text-gray-200"/>--}}
-                    </a>
                 </div>
 
                 <!-- Navigation Links -->
@@ -29,28 +27,20 @@
                         @endif
 
 
-{{--                    <x-nav-link :href="route('home')" :active="request()->routeIs('home')">--}}
-{{--                        {{ __('Home') }}--}}
+{{--                    <x-nav-link :href="route('canvas')" :active="request()->routeIs('canvas')">--}}
+{{--                        {{ __('Flashgame') }}--}}
 {{--                    </x-nav-link>--}}
-
-{{--                    <x-nav-link :href="route('contact')" :active="request()->routeIs('contact')">--}}
-{{--                        {{ __('Contact') }}--}}
-{{--                    </x-nav-link>--}}
-
-{{--                    <x-nav-link :href="route('about-us')" :active="request()->routeIs('about-us')">--}}
-{{--                        {{ __('About Us') }}--}}
-{{--                    </x-nav-link>--}}
-
-                    <x-nav-link :href="route('canvas')" :active="request()->routeIs('canvas')">
-                        {{ __('Flashgame') }}
-                    </x-nav-link>
-
+                        @if(auth()->check() && auth()->user()->role === 'user')
                     <x-nav-link :href="route('user.blog.index')" :active="request()->routeIs('user.blog.index')">
                         {{ __('Blog') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('user.blog.create')" :active="request()->routeIs('user.blog.create')">
+                        @endif
+                        @if(auth()->check() && auth()->user()->role === 'user')
+                        <x-nav-link :href="route('user.blog.create')" :active="request()->routeIs('user.blog.create')">
                         {{ __('Create a blog') }}
                     </x-nav-link>
+                        @endif
+
                 </div>
             </div>
 
