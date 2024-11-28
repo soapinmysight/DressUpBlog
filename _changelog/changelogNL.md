@@ -146,6 +146,7 @@ Hier gebruik ik Eloquent om query's uit te voeren op het database:
 ### 08/11/2024
 #### Opgelost
 - **Rollen en Middleware**: Roltoewijzing (gebruiker/admin) geïmplementeerd. Routingproblemen opgelost via middleware in `bootstrap/app.php`.
+<p align="center"><img src="./images/rolemiddleware0811.png" height="400" alt="role middleware"></p>
 
 ---
 ### 09/11/2024
@@ -166,7 +167,6 @@ Hier gebruik ik Eloquent om query's uit te voeren op het database:
 #### Toegevoegd
 - **Blog bewerken**: `edit.blade.php` en logica in `BlogController.php` en `AppServiceProvider.php`.
 - Validatie toegevoegd voor blog-edit en -aanmaak (titel en beschrijving verplicht). Breeze valideert bijvoorbeeld e-mailadressen bij login.
-- VALIDATIE VOOR AFBEELDINGEN.
 
 #### Gewijzigd
 - **Views**: Bewerken-knop verplaatst naar `show.blade.php`.
@@ -179,9 +179,12 @@ Hier gebruik ik Eloquent om query's uit te voeren op het database:
 ---
 ### 19/11/2024
 #### Toegevoegd
-- **Gebruikersrestricties**: Alleen reageren als gebruiker drie blogs heeft gepost.
+- **Gebruikersrestricties**: Alleen reageren als gebruiker drie blogs heeft gepost. Dit ging eerst fout omdat ik te oude bronnen had gebruikt, waar een bestand "authserviceprovider" werd genoemd. Dit bestand kon ik niet vinden, en later bleek ik de "AppServiceProvider" te moeten gebruiken.
 - **Themakeuze**: Functie toegevoegd om thema’s te kiezen bij blogaanmaak.
-
+### Bron
+https://laracasts.com/discuss/channels/laravel/policy-on-create
+https://laravel.com/docs/11.x/queries#where-clauses
+https://medium.com/@umerfayyaz500/laravel-11-policies-and-secure-your-app-with-policy-driven-authorization-77759459888f
 ---
 ### 23/11/2024
 #### Toegevoegd
@@ -194,12 +197,31 @@ Hier gebruik ik Eloquent om query's uit te voeren op het database:
 ### 24/11/2024
 #### Toegevoegd
 - **Zoekfunctionaliteit**: Geïmplementeerd in `user.blog.index`.
+#### Probleem
+- **Afbeeldingverwerking**: Het verwerken van de canvas naar een base64, die vervolgens in de controller gedecode kan worden naar afbeelding om heb opteslaan en in een blog kunnen posten is nog steeds niet gelukt.
 
 ---
 ### 26/11/2024
 #### Opgelost
-- **Probleem met afbeeldingensubmit**: Submit-knop logica voor afbeeldingen opslaan toegevoegd en afgerond in blogs.
+- **Probleem met afbeeldingensubmit**: Uiteindelijk bleek ik de code niet aan te roepen doordat deze niet werd aangeroepen door de submit button. Hier ben ik achter gekomen toen ik met een vriend naar de code keek.
 
 ### Bron
 [Laravel Filesystem](https://laravel.com/docs/11.x/filesystem)  
 [W3Schools PHP-functies](https://www.w3schools.com/php/)
+
+---
+### 27/11/2024
+#### OWASP
+- **CRSF**: Doordat ik in ieder formulier een crsf token heb staan, vermijd ik dat derde partijen mijn form in vullen.
+<p align="center"><img src="./images/crsftoken.png" height="400" alt="crfs token"></p>
+
+#### Added
+- **Toggle Section in blog policy**: Ik heb toggle toegevoegd in de blogpolicy, zodat alleen admin de blogs kan togglen
+---
+### 28/11/2024
+#### Added
+- **Policy**: Ik ontdekte tijdens een laatste check met de assignment criteria dat ik nergens daadwerkelijk de policy toepas, maar inplaats daarvan een handmatige check via de middleware heb. Ik heb het aangepast zodat ik de policy wel toepas.
+
+### Bron
+https://medium.com/@umerfayyaz500/laravel-11-policies-and-secure-your-app-with-policy-driven-authorization-77759459888f
+

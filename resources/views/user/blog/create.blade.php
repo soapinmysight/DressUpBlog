@@ -9,6 +9,7 @@
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
                     <form method="POST" action="{{ route('user.blog.store') }}" enctype="multipart/form-data">
+                        {{--Token to verify that the authenticated user is the person actually making the requests to the application.--}}
                         @csrf
                         <div class="mb-4">
                             <label for="title" class="block text-sm font-medium">Title</label>

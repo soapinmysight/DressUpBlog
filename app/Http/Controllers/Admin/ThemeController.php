@@ -33,8 +33,15 @@ class ThemeController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request, Theme $theme)
     {
+        // Calls BlogPolicy::toggle() to verify admin role
+        $this->authorize('create', $theme);
+        // Verify admin role via middleware
+        if (auth()->user()->role !== 'admin') {
+            abort(403, 'Unauthorized action.');
+        }
+
         $request->validate([
             'themeTitle' => 'required|max:100',
         ]);
@@ -59,6 +66,12 @@ class ThemeController extends Controller
      */
     public function edit(Theme $theme)
     {
+        // Calls BlogPolicy::update() to verify admin role
+        $this->authorize('update', $theme);
+        // Verify admin role again via middleware to make sure user is allowed to t=do this action
+        if (auth()->user()->role !== 'admin') {
+            abort(403, 'Unauthorized action.');
+        }
         return view('admin.theme.edit', compact('theme'));
     }
 
@@ -67,6 +80,12 @@ class ThemeController extends Controller
      */
     public function update(Request $request, Theme $theme)
     {
+        // Calls BlogPolicy::update() to verify admin role
+        $this->authorize('update', $theme);
+        // Verify admin role again via middleware to make sure user is allowed to t=do this action
+        if (auth()->user()->role !== 'admin') {
+            abort(403, 'Unauthorized action.');
+        }
         $request->validate([
             'themeTitle' => 'required|max:100',
         ]);
@@ -82,6 +101,12 @@ class ThemeController extends Controller
      */
     public function destroy(Theme $theme)
     {
+        // Calls BlogPolicy::delete() to verify admin role
+        $this->authorize('delete', $theme);
+        // Verify admin role again via middleware to make sure user is allowed to t=do this action
+        if (auth()->user()->role !== 'admin') {
+            abort(403, 'Unauthorized action.');
+        }
         // Ensure themes with associated blogs cannot be deleted
         if ($theme->blogs()->exists()) {
             return redirect()->route('admin.theme.index')

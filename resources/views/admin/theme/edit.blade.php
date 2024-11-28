@@ -20,8 +20,9 @@
                             </ul>
                         </div>
                     @endif
-
+                    @if(auth()->user()->role === 'admin')
                     <form action="{{ route('admin.theme.update', $theme->id) }}" method="POST">
+                        {{--Token to verify that the authenticated user is the person actually making the requests to the application.--}}
                         @csrf
                         @method('PUT')
 
@@ -32,6 +33,8 @@
 
                         <button type="submit" class="px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700">Update Theme</button>
                     </form>
+                    @endif
+
                 </div>
             </div>
         </div>

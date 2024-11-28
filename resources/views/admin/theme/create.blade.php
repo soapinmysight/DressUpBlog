@@ -20,8 +20,9 @@
                             </ul>
                         </div>
                     @endif
-
+                    @if(auth()->user()->role === 'admin')
                     <form action="{{ route('admin.theme.store') }}" method="POST">
+                        {{--Token to verify that the authenticated user is the person actually making the requests to the application.--}}
                         @csrf
 
                         <div class="mb-4">
@@ -31,6 +32,8 @@
 
                         <button type="submit" class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700">Create Theme</button>
                     </form>
+                    @endif
+
                 </div>
             </div>
         </div>

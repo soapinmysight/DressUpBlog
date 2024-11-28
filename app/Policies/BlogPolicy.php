@@ -49,7 +49,15 @@ class BlogPolicy
         // Authorize the delete action only for the blog’s owner
         return $user->id === $blog->user_id;
     }
-
+    
+    /**
+     * Determine whether the user can toggle
+     */
+    public function toggle(User $user, Blog $blog): bool
+    {
+        // Only admins can toggle the blog's active status
+        return $user->role === 'admin';
+    }
     /**
      * Determine whether the user can restore the model.
      */

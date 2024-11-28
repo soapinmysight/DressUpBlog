@@ -10,6 +10,7 @@
                 <div class="p-6 text-gray-900 dark:text-gray-100">
                     <h1 class="text-lg font-semibold mb-4">Are you sure you want to delete this blog?</h1>
                     <form action="{{ route('user.blog.destroy', $blog->id) }}" method="POST">
+                        {{--Token to verify that the authenticated user is the person actually making the requests to the application.--}}
                         @csrf
                         @method('DELETE')
                         <div class="mb-4">

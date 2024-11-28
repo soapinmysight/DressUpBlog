@@ -5,9 +5,11 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Blog;
 use Illuminate\Http\Request;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests; // Necessary to use authorization for edit/update functionalities
 
 class BlogController extends Controller
 {
+    use AuthorizesRequests; // Necessary to use authorization for edit/update functionalities
     /**
      * Display a listing of the resource.
      */
@@ -23,6 +25,13 @@ class BlogController extends Controller
      */
     public function toggle(Blog $blog)
     {
+        // Calls BlogPolicy::toggle() to verify admin role
+        $this->authorize('toggle', $blog);
+        // Verify admin role again via middleware to make sure user is allowed to t=do this action
+        if (auth()->user()->role !== 'admin') {
+            abort(403, 'Unauthorized action.');
+        }
+
         $blog->active = !$blog->active; // Toggle the active status
         $blog->save();
 

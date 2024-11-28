@@ -10,13 +10,18 @@
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
                     <h1 class="text-2xl font-bold">Manage Blogs</h1>
-
                     @foreach($blogs as $blog)
                         <div class="my-4 p-4 bg-gray-100 dark:bg-gray-700 rounded-md shadow">
                             <h2 class="text-lg font-semibold">{{ $blog->title }}</h2>
                             <p><strong>Author:</strong> {{ $blog->user->name }}</p>
                             <p><strong>Theme:</strong> {{ $blog->theme->themeTitle }}</p>
                             <p>{{ $blog->description }}</p>
+                            @if ($blog->image)
+                                <div class="mt-2">
+                                    <img src="{{ asset('storage/' . $blog->image) }}" alt="{{ $blog->title }} image"
+                                         class="rounded-md shadow w-full h-auto">
+                                </div>
+                            @endif
                             <p>
                                 <strong>Status:</strong>
                                 @if($blog->active)
@@ -25,7 +30,9 @@
                                     <span class="text-red-600">Inactive</span>
                                 @endif
                             </p>
+                            @if(auth()->user()->role === 'admin')
                             <form method="POST" action="{{ route('admin.blog.toggle', $blog->id) }}">
+                                {{--Token to verify that the authenticated user is the person actually making the requests to the application.--}}
                                 @csrf
                                 @method('POST')
                                 <button type="submit"
@@ -33,6 +40,7 @@
                                     {{ $blog->active ? 'Deactivate' : 'Activate' }}
                                 </button>
                             </form>
+                            @endif
 {{--                                To display comments, a controller for admin comments needs to be made--}}
 {{--                            <div class="mt-4">--}}
 {{--                                <h3 class="text-md font-semibold">Comments:</h3>--}}

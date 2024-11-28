@@ -9,6 +9,7 @@
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
                     <form action="{{ route('user.blog.update', $blog->id) }}" method="POST" enctype="multipart/form-data">
+                        {{--Token to verify that the authenticated user is the person actually making the requests to the application.--}}
                         @csrf
                         @method('PUT')
                         <div class="mb-4">
