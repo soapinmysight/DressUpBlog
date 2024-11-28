@@ -66,6 +66,7 @@ class CommentController extends Controller
      */
     public function update(Request $request, Comment $comment)
     {
+        //authorize through policy
         $this->authorize('update', $comment);
 
         $request->validate([
@@ -83,6 +84,8 @@ class CommentController extends Controller
      */
     public function destroy(Comment $comment)
     {
+        //authorize through policy
+
         $this->authorize('delete', $comment);
         $comment->delete();
 

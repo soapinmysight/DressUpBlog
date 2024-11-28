@@ -56,6 +56,8 @@ class BlogController extends Controller
      */
     public function store(Request $request)
     {
+
+
         $request->validate([
             'title' => 'required|max:100',
             'description' => 'required',
@@ -104,7 +106,7 @@ class BlogController extends Controller
      */
     public function edit(Blog $blog)
     {
-        // Authorize the action
+        // Authorize the action through policy
         $this->authorize('update', $blog);
 
         // Return to edit view
@@ -116,7 +118,7 @@ class BlogController extends Controller
      */
     public function update(Request $request, Blog $blog)
     {
-        // Authorize the action
+        // Authorize the action through policy
         $this->authorize('update', $blog);
 
         // Validate input
@@ -165,6 +167,8 @@ class BlogController extends Controller
      */
     public function delete(Blog $blog)
     {
+        // Authorize the action
+        $this->authorize('delete', $blog);
         return view('user.blog.delete', ['blog' => $blog]); //show a single blog
     }
 

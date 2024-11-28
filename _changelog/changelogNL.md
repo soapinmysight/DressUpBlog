@@ -145,8 +145,17 @@ Hier gebruik ik Eloquent om query's uit te voeren op het database:
 ---
 ### 08/11/2024
 #### Opgelost
+- **Group routing for user**
 - **Rollen en Middleware**: Roltoewijzing (gebruiker/admin) geïmplementeerd. Routingproblemen opgelost via middleware in `bootstrap/app.php`.
 <p align="center"><img src="./images/rolemiddleware0811.png" height="400" alt="role middleware"></p>
+
+### Bron
+https://laravel.com/docs/11.x/routing
+https://laravel.com/docs/11.x/middleware#global-middleware
+https://medium.com/@techsolutionstuff/how-to-create-custom-middleware-in-laravel-11-964edc13d434
+https://stackoverflow.com/questions/78924699/how-to-create-an-admin-account-in-laravel-11-using-breeze
+https://laravel.com/docs/11.x/middleware
+https://rezakhademix.medium.com/laravel-11-no-http-kernel-no-casts-no-console-kernel-721c62adb6ef
 
 ---
 ### 09/11/2024
@@ -159,23 +168,41 @@ Hier gebruik ik Eloquent om query's uit te voeren op het database:
 ---
 ### 11/11/2024
 #### Toegevoegd
-- **Auteursnaam tonen**: Blogauteursnamen weergegeven met geüpdatete modellen en controllers.
-- **CRUD-updates**: Focus op CRUD-functionaliteiten voor blogs en reacties.
-
+- **Auteursnaam tonen**: code toegevoegd voor blog om de naam van de auteur-gebruiker weer te geven. Om dit te bereiken heb ik de code in controller bewerkt, een belongs to-relatie toegevoegd in het model en de view bewerkt.
 ---
 ### 13/11/2024
 #### Toegevoegd
-- **Blog bewerken**: `edit.blade.php` en logica in `BlogController.php` en `AppServiceProvider.php`.
-- Validatie toegevoegd voor blog-edit en -aanmaak (titel en beschrijving verplicht). Breeze valideert bijvoorbeeld e-mailadressen bij login.
+- **Blog bewerken**: `edit.blade.php` en logica in `BlogController.php` en `AppServiceProvider.php`. Blog kan alleen bewerkt worden door de aigenaar van de blog.
+- **Blog verwijderen**: `edit.blade.php` en logica in `BlogController.php` en `AppServiceProvider.php`. Blog kan alleen verwijderd worden door de eigenaar van de blog
+
+- Validatie toegevoegd voor blog-edit en -aanmaak (titel en beschrijving required). Breeze valideert bijvoorbeeld e-mailadressen bij login.
 
 #### Gewijzigd
 - **Views**: Bewerken-knop verplaatst naar `show.blade.php`.
-
+### Bron
+https://medium.com/@tutsmake.com/laravel-11-simple-crud-application-example-2f0fc9c2f572
+https://laracasts.com/discuss/channels/eloquent/destroy
 ---
 ### 14/11/2024
 #### Opgelost
-- **Reacties CRUD**: Toegevoegd en debugged, inclusief policies en views.
+- **Comments CRUD**: Toegevoegd en debugged, inclusief policies en views.
+  Comments crud (must have's) zou nu moeten werken, hoewel er een nieuwe bug is waar ik mee worstel.
 
+Gewijzigd: CommentController.php om crud-functionaliteiten toe te voegen (en verplaatst naar user namespace)
+Toegevoegd: CommentPolicy.php voor beveiliging
+Gewijzigd: AppServiceProvider.php om nieuwe policy te registreren
+Gewijzigd: show.blade.php voor read en delete comments
+Toegevoegd: edit.blade.php om comments te bewerken
+Gewijzigd: user.php om comment routes toe te voegen
+Nieuwe bug die ik de volgende keer moet oplossen: wanneer ik de code test op een ander account, geeft het bezoeken van de blogindexpagina een 403-fout. Heeft dit mogelijk iets te maken met autorisatie? de policies?
+---
+### 16/11/2024
+#### Toegevoegd
+- **Toggle functionalities for admin**
+- #### Opgelost
+- **Error van gisteren**
+#### Mee bezig
+- **Flashgame toevoegen aan blog.create**: Ik denk dat ik base64 ga gebruiken, maar ik weet nog niet precies hoe, en of dat nodig is. Ik kan geen goede bronnen vinden.
 ---
 ### 19/11/2024
 #### Toegevoegd
@@ -185,21 +212,33 @@ Hier gebruik ik Eloquent om query's uit te voeren op het database:
 https://laracasts.com/discuss/channels/laravel/policy-on-create
 https://laravel.com/docs/11.x/queries#where-clauses
 https://medium.com/@umerfayyaz500/laravel-11-policies-and-secure-your-app-with-policy-driven-authorization-77759459888f
+### 22/11/2024
+#### Toegevoegd
+- **Comments in admin.blog.index**
+#### Verwijderd
+- **Comments in admin.blog.index** Er is en error en ik weet hoe je het moet oplossen maar ik kan beter focussen op dingen die wel op mijn planning staan.
 ---
 ### 23/11/2024
 #### Toegevoegd
 - **Thema CRUD voor Admin**: CRUD-operaties afgerond en gestyled.
-
+- **Filterfunctionaliteiten**: Je kan nu blog's filteren op thema
 #### Gewijzigd
-- **Gebruikersviews**: Kleine stylingaanpassingen.
+- **User views**: Kleine stylingaanpassingen.
+### Bron
+https://laravel.com/docs/11.x/queries
 
 ---
 ### 24/11/2024
 #### Toegevoegd
-- **Zoekfunctionaliteit**: Geïmplementeerd in `user.blog.index`.
+- **Zoekfunctionaliteit**:  Zoek functionaliteiten voor user.blog.index met nested condition (zodat in beide title en description gezocht kan worden)
 #### Probleem
 - **Afbeeldingverwerking**: Het verwerken van de canvas naar een base64, die vervolgens in de controller gedecode kan worden naar afbeelding om heb opteslaan en in een blog kunnen posten is nog steeds niet gelukt.
-
+### Bron
+Antwans post over afbeeldingen op teams
+https://laravel.com/docs/11.x/requests
+  https://laravel.com/docs/11.x/queries
+  https://stackoverflow.com/questions/40310485/create-nested-or-condition-using-laravel-eloquent
+De onderste bron raad ik niet aan omdat hij te oud is.
 ---
 ### 26/11/2024
 #### Opgelost
@@ -208,7 +247,11 @@ https://medium.com/@umerfayyaz500/laravel-11-policies-and-secure-your-app-with-p
 ### Bron
 [Laravel Filesystem](https://laravel.com/docs/11.x/filesystem)  
 [W3Schools PHP-functies](https://www.w3schools.com/php/)
-
+https://www.w3schools.com/php/func_misc_uniqid.asp
+https://www.w3schools.com/php/func_string_explode.asp
+https://www.geeksforgeeks.org/php-base64_decode-function/
+https://www.tutorialspoint.com/how-to-convert-canvas-graphics-to-image
+https://www.w3schools.com/php/func_filesystem_file_put_contents.asp
 ---
 ### 27/11/2024
 #### OWASP
@@ -220,7 +263,10 @@ https://medium.com/@umerfayyaz500/laravel-11-policies-and-secure-your-app-with-p
 ---
 ### 28/11/2024
 #### Added
-- **Policy**: Ik ontdekte tijdens een laatste check met de assignment criteria dat ik nergens daadwerkelijk de policy toepas, maar inplaats daarvan een handmatige check via de middleware heb. Ik heb het aangepast zodat ik de policy wel toepas.
+- **Policy**: Ik ontdekte tijdens een laatste check met de assignment criteria dat ik bij admin nergens daadwerkelijk de policy toepas, maar inplaats daarvan een handmatige check via de middleware heb. Ik heb het aangepast zodat ik de policy wel toepas. Ik heb de check met de middleware gehouden voor eventuele extra beveiliging.
+<p align="center"><img src="./images/themepolicy.png" height="400" alt="theme Policy"></p>
+<p align="center"><img src="./images/themeController.png" height="400" alt="theme Controller"></p>
+<p align="center"><img src="./images/AppServiceProvider.png" height="400" alt="AppServiceProvider"></p>
 
 ### Bron
 https://medium.com/@umerfayyaz500/laravel-11-policies-and-secure-your-app-with-policy-driven-authorization-77759459888f
